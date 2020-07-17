@@ -18,6 +18,9 @@
 		8D40490B24C01C7D0023FAF5 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490A24C01C7D0023FAF5 /* Manage.storyboard */; };
 		8D40490D24C01CCF0023FAF5 /* View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490C24C01CCF0023FAF5 /* View.storyboard */; };
 		8D40490F24C01F4E0023FAF5 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490E24C01F4E0023FAF5 /* Detail.storyboard */; };
+		8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */; };
+		8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF024C14068000A2609 /* ManageViewController.swift */; };
+		8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF224C14166000A2609 /* CupThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		8D40490A24C01C7D0023FAF5 /* Manage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manage.storyboard; sourceTree = "<group>"; };
 		8D40490C24C01CCF0023FAF5 /* View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = View.storyboard; sourceTree = "<group>"; };
 		8D40490E24C01F4E0023FAF5 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
+		8D835CF024C14068000A2609 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
+		8D835CF224C14166000A2609 /* CupThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +114,13 @@
 				8D4048DA24C01BAE0023FAF5 /* AppDelegate.swift */,
 				8D4048DC24C01BAE0023FAF5 /* SceneDelegate.swift */,
 				8D4048DE24C01BAE0023FAF5 /* ViewController.swift */,
+				8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */,
 				8D4048E024C01BAE0023FAF5 /* Main.storyboard */,
 				8D40490C24C01CCF0023FAF5 /* View.storyboard */,
 				8D40490E24C01F4E0023FAF5 /* Detail.storyboard */,
 				8D40490A24C01C7D0023FAF5 /* Manage.storyboard */,
+				8D835CF224C14166000A2609 /* CupThumbnail.swift */,
+				8D835CF024C14068000A2609 /* ManageViewController.swift */,
 				8D4048E324C01BB00023FAF5 /* Assets.xcassets */,
 				8D4048E524C01BB00023FAF5 /* LaunchScreen.storyboard */,
 				8D4048E824C01BB00023FAF5 /* Info.plist */,
@@ -271,8 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */,
 				8D4048DF24C01BAE0023FAF5 /* ViewController.swift in Sources */,
 				8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */,
+				8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */,
+				8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */,
 				8D4048DD24C01BAE0023FAF5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
