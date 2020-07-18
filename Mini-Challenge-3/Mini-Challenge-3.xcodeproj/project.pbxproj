@@ -21,6 +21,9 @@
 		8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */; };
 		8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF024C14068000A2609 /* ManageViewController.swift */; };
 		8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF224C14166000A2609 /* CupThumbnail.swift */; };
+		8DF3A74824C28F4000F1CC67 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */; };
+		8DF3A74A24C28FE200F1CC67 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3A74924C28FE200F1CC67 /* ParticipantTableViewCell.swift */; };
+		8DF3A74C24C2A73D00F1CC67 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3A74B24C2A73D00F1CC67 /* Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
 		8D835CF024C14068000A2609 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
 		8D835CF224C14166000A2609 /* CupThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupThumbnail.swift; sourceTree = "<group>"; };
+		8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
+		8DF3A74924C28FE200F1CC67 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
+		8DF3A74B24C2A73D00F1CC67 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,9 @@
 				8D40490C24C01CCF0023FAF5 /* View.storyboard */,
 				8D40490E24C01F4E0023FAF5 /* Detail.storyboard */,
 				8D40490A24C01C7D0023FAF5 /* Manage.storyboard */,
+				8DF3A74924C28FE200F1CC67 /* ParticipantTableViewCell.swift */,
+				8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */,
+				8DF3A74B24C2A73D00F1CC67 /* Match.swift */,
 				8D835CF224C14166000A2609 /* CupThumbnail.swift */,
 				8D835CF024C14068000A2609 /* ManageViewController.swift */,
 				8D4048E324C01BB00023FAF5 /* Assets.xcassets */,
@@ -282,6 +291,9 @@
 			files = (
 				8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */,
 				8D4048DF24C01BAE0023FAF5 /* ViewController.swift in Sources */,
+				8DF3A74C24C2A73D00F1CC67 /* Match.swift in Sources */,
+				8DF3A74824C28F4000F1CC67 /* CreateTourViewController.swift in Sources */,
+				8DF3A74A24C28FE200F1CC67 /* ParticipantTableViewCell.swift in Sources */,
 				8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */,
 				8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */,
 				8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */,
