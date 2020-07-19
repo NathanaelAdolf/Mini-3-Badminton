@@ -8,12 +8,13 @@
 
 import UIKit
 
-class CreateTourViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class CreateTourViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
+  
     @IBOutlet weak var participantTableView: UITableView!
     
     var playerNameListArray: [String] = []
     var participantMatchArray: [Match] = []
+    let formatArray = ["Round Robin", "Knockout"]
     var tableRowIndex: Int = 0
     
     @IBOutlet weak var addButton: UIButton!
@@ -34,6 +35,23 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    //picker view
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return formatArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return formatArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //untuk nentuin pilihan user aja nanti
     }
         
   
@@ -79,6 +97,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         playerNameListArray.append("Adolf")
         playerNameListArray.append("Sukiman")
         playerNameListArray.append("Yere")
+        playerNameListArray.append("joko")
         
         makeMatch(listOfPlayerName:  playerNameListArray)
         print(participantMatchArray[0].firstPlayerName,participantMatchArray[0].secondPlayerName)
@@ -93,16 +112,5 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

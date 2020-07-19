@@ -100,7 +100,14 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return action
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func pressedAction(_ sender: Any) {
+        performSegue(withIdentifier: "toCreateTourSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
