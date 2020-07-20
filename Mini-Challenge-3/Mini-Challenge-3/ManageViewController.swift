@@ -134,7 +134,13 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func unwindToTable(sender: UIStoryboardSegue) {
             //method buat balikkin dari halaman create ke halaman ini
+        
+
           }
+    
+    @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

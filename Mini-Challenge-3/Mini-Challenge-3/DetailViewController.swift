@@ -10,6 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var standingsView: UIView!
+    @IBOutlet weak var scheduleView: UIView!
     @IBOutlet weak var cupTitleLabel: UILabel!
     @IBOutlet weak var cupCodeLabel: UILabel!
     
@@ -22,7 +25,29 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
           navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        if segmented.selectedSegmentIndex == 0 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.standingsView.alpha = 0
+                self.scheduleView.alpha = 1
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.standingsView.alpha = 1
+                self.scheduleView.alpha = 0
+            })
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        if identifier == "cancelToManage"{
+            print ("berhasil balik")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
