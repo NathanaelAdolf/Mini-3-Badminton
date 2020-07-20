@@ -13,7 +13,9 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tournamentTableView: UITableView!
     
     var tournamentListArray: [CupThumbnail] = []
+    var choosenCupTitle: String = ""
     
+    var addButton = UIButton()
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 116
     }
@@ -31,6 +33,19 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.cupDescriptionLabel.text = tournamentListArray[indexPath.row].cupDesc
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
+        print(choosenCupTitle)
+        performSegue(withIdentifier: "toDetailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailViewController
+        {
+           // destination.cupTitleLabel.text = choosenCupTitle
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,11 +68,13 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
            sectionLabel.text = "Tournament Created"
              sectionLabel.sizeToFit()
         
-            let addButton = UIButton(frame: CGRect(x: 335, y: 23, width:
+             addButton = UIButton(frame: CGRect(x: 335, y: 23, width:
             30, height: 37))
             let plusSystemImage = UIImage(systemName: "plus.circle")
             addButton.setImage(plusSystemImage, for: .normal)
             addButton.tintColor = .red
+        
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         
             headerView.addSubview(sectionLabel)
             headerView.addSubview(addButton)
@@ -100,13 +117,24 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return action
     }
     
+   @objc func addButtonPressed()
+    {
+        print("add button pressed")
+        performSegue(withIdentifier: "toCreateTourSegue", sender: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func pressedAction(_ sender: Any) {
         performSegue(withIdentifier: "toCreateTourSegue", sender: self)
     }
+    
+    @IBAction func unwindToTable(sender: UIStoryboardSegue) {
+            //method buat balikkin dari halaman create ke halaman ini
+          }
     
     override func viewDidLoad() {
         super.viewDidLoad()

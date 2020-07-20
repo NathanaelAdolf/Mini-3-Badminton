@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sbe-Xt-hM3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Tt-zd-5PA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,45 +7,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="FTh-Ai-x36">
-            <objects>
-                <navigationController id="Sbe-Xt-hM3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4WJ-X9-61m">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.83137254900000002" green="0.0" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="8Tt-zd-5PA" kind="relationship" relationship="rootViewController" id="j5C-b6-67h"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qZu-3G-5vd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1298" y="96"/>
-        </scene>
         <!--Cup-->
         <scene sceneID="kSI-ba-D45">
             <objects>
-                <viewController id="8Tt-zd-5PA" customClass="ViewController" customModule="mini_3_badminton" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Tt-zd-5PA" customClass="DetailViewController" customModule="Mini_Challenge_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pod-Uw-OD2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zio-sP-GFV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="barTintColor" red="0.83137254900000002" green="0.0" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Title" id="N9w-Yr-2No"/>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZF-hQ-vAD">
                                 <rect key="frame" x="20" y="106" width="374" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,25 +36,7 @@
                                     <segment title="Schedule"/>
                                     <segment title="Standings"/>
                                 </segments>
-                                <connections>
-                                    <action selector="segmentedControl:" destination="8Tt-zd-5PA" eventType="valueChanged" id="xpB-w4-8YB"/>
-                                </connections>
                             </segmentedControl>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kCz-Dc-wlu">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem title="Manage" image="square.and.pencil" catalog="system" id="Cto-mc-oMo"/>
-                                    <tabBarItem title="View" image="eye" catalog="system" id="QVO-cT-UkK"/>
-                                </items>
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                        <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </tabBar>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydb-HM-0wG">
                                 <rect key="frame" x="20" y="269" width="374" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -100,16 +51,25 @@
                                     <segue destination="3Qf-Q3-YRX" kind="embed" id="wwh-jM-gjj"/>
                                 </connections>
                             </containerView>
+                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zio-sP-GFV">
+                                <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.83137254900000002" green="0.0" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Cup" id="N9w-Yr-2No"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9uf-kf-BIT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cup" id="gl1-tf-YaK"/>
                     <connections>
-                        <outlet property="scheduleView" destination="ydb-HM-0wG" id="mtB-du-4wZ"/>
-                        <outlet property="segment" destination="Ggi-V9-zDu" id="Cpp-ob-WYh"/>
-                        <outlet property="standingsView" destination="RDu-Mp-kVv" id="SrR-Gw-usq"/>
-                        <outlet property="tabBar" destination="kCz-Dc-wlu" id="Bwq-Cz-RSf"/>
+                        <outlet property="cupCodeLabel" destination="1qQ-GU-Cb4" id="8rT-g9-KbR"/>
+                        <outlet property="cupTitleLabel" destination="2ZF-hQ-vAD" id="Rpd-gJ-Xvy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYV-29-D18" sceneMemberID="firstResponder"/>
@@ -624,9 +584,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eye" catalog="system" width="128" height="81"/>
         <image name="line_red" width="72" height="31"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="vline_black" width="17" height="111"/>
     </resources>
 </document>

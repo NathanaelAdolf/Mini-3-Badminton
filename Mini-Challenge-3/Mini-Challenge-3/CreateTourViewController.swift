@@ -17,8 +17,10 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     let formatArray = ["Round Robin", "Knockout"]
     var tableRowIndex: Int = 0
     
-    @IBOutlet weak var addButton: UIButton!
+    var addButton = UIButton()
     @IBOutlet weak var doneButton: UIButton!
+    
+    @IBOutlet weak var randomCodeLabel: UILabel!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerNameListArray.count
@@ -33,11 +35,41 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+          
+            let headerView = UIView()
+    headerView.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+
+            let sectionLabel = UILabel(frame: CGRect(x: 0, y: 28, width:
+            100, height: 30))
+            sectionLabel.font = UIFont(name: "Helvetica", size: 15)
+    sectionLabel.textColor = UIColor.gray
+          sectionLabel.text = "     Participants"
+            sectionLabel.sizeToFit()
+       
+            addButton = UIButton(frame: CGRect(x: 360, y: 25, width:
+           30, height: 37))
+           let plusSystemImage = UIImage(systemName: "plus.circle")
+           addButton.setImage(plusSystemImage, for: .normal)
+    addButton.tintColor = .red
+       
+       addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+       
+           headerView.addSubview(sectionLabel)
+           headerView.addSubview(addButton)
+
+            return headerView
+          }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+           return "Participants"
+       }
+    
+    //picker view
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    //picker view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -49,18 +81,17 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return formatArray.count
     }
+
+    @IBAction func doneAction(_ sender: Any) {
+        performSegue(withIdentifier: "toDetailSegue", sender: self)
+    }
+        
+    @objc func addButtonPressed()
+    {
+        print("add button pressed")
+        performSegue(withIdentifier: "toAddParticipantSegue", sender: self)
+    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //untuk nentuin pilihan user aja nanti
-    }
-        
-  
-    @IBAction func addAction(_ sender: Any) {
-        tableRowIndex += 1
-        playerNameListArray.append("Player Name")
-        
-        participantTableView.reloadData()
-    }
     
     func makeMatch( listOfPlayerName: [String])
     {
@@ -68,13 +99,12 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             
             for secondIndex in 0...listOfPlayerName.count - 1 {
                 if firstIndex == secondIndex {
-                    print("Skipp")
+                    
                 }
                 else
                 {
                     if secondIndex < firstIndex
                     {
-                        print("skipp")
                     }
                     else
                     {
@@ -85,7 +115,41 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    override func viewDidLoad() {
+    func printMatch(listOfPlayerMatch: [Match])
+    {
+        for i in 0...participantMatchArray.count - 1 {
+            print("\(String(describing: participantMatchArray[i].firstPlayerName)) vs \(String(describing: participantMatchArray[i].secondPlayerName))")
+        }
+    }
+    
+    func generateRandomString()->String
+    {
+        let letters: NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789"
+        let len = UInt32(letters.length)
+        var randomString = ""
+        
+        for _ in 0...4 {
+            let random = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(random))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         participantTableView.delegate = self
@@ -93,24 +157,19 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         
         doneButton.layer.cornerRadius = 5
         
+        //generate random code
+        randomCodeLabel.text = generateRandomString()
+        
+        /*test data dummy
         playerNameListArray.append("Nael")
         playerNameListArray.append("Adolf")
         playerNameListArray.append("Sukiman")
         playerNameListArray.append("Yere")
         playerNameListArray.append("joko")
         
+ 
         makeMatch(listOfPlayerName:  playerNameListArray)
-        print(participantMatchArray[0].firstPlayerName,participantMatchArray[0].secondPlayerName)
-        print(participantMatchArray[1].firstPlayerName,participantMatchArray[1].secondPlayerName)
-        print(participantMatchArray[2].firstPlayerName,participantMatchArray[2].secondPlayerName)
-        print(participantMatchArray[3].firstPlayerName,participantMatchArray[3].secondPlayerName)
-        print(participantMatchArray[4].firstPlayerName,participantMatchArray[4].secondPlayerName)
-        print(participantMatchArray[5].firstPlayerName,participantMatchArray[5].secondPlayerName)
-        print(participantMatchArray.count)
+        printMatch(listOfPlayerMatch: participantMatchArray)
+        */
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-    }
-
 }

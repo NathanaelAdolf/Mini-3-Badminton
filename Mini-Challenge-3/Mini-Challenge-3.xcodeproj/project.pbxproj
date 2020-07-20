@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4048DA24C01BAE0023FAF5 /* AppDelegate.swift */; };
 		8D4048DD24C01BAE0023FAF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4048DC24C01BAE0023FAF5 /* SceneDelegate.swift */; };
-		8D4048DF24C01BAE0023FAF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4048DE24C01BAE0023FAF5 /* ViewController.swift */; };
 		8D4048E224C01BAE0023FAF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4048E024C01BAE0023FAF5 /* Main.storyboard */; };
 		8D4048E424C01BB00023FAF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D4048E324C01BB00023FAF5 /* Assets.xcassets */; };
 		8D4048E724C01BB00023FAF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4048E524C01BB00023FAF5 /* LaunchScreen.storyboard */; };
@@ -18,6 +17,8 @@
 		8D40490B24C01C7D0023FAF5 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490A24C01C7D0023FAF5 /* Manage.storyboard */; };
 		8D40490D24C01CCF0023FAF5 /* View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490C24C01CCF0023FAF5 /* View.storyboard */; };
 		8D40490F24C01F4E0023FAF5 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490E24C01F4E0023FAF5 /* Detail.storyboard */; };
+		8D7A636624C544AC008FE002 /* AddParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7A636524C544AC008FE002 /* AddParticipantViewController.swift */; };
+		8D7A636824C5568F008FE002 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7A636724C5568F008FE002 /* DetailViewController.swift */; };
 		8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */; };
 		8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF024C14068000A2609 /* ManageViewController.swift */; };
 		8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF224C14166000A2609 /* CupThumbnail.swift */; };
@@ -47,7 +48,6 @@
 		8D4048D724C01BAE0023FAF5 /* Mini-Challenge-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mini-Challenge-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4048DA24C01BAE0023FAF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D4048DC24C01BAE0023FAF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8D4048DE24C01BAE0023FAF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D4048E124C01BAE0023FAF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D4048E324C01BB00023FAF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D4048E624C01BB00023FAF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		8D40490A24C01C7D0023FAF5 /* Manage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manage.storyboard; sourceTree = "<group>"; };
 		8D40490C24C01CCF0023FAF5 /* View.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = View.storyboard; sourceTree = "<group>"; };
 		8D40490E24C01F4E0023FAF5 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		8D7A636524C544AC008FE002 /* AddParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParticipantViewController.swift; sourceTree = "<group>"; };
+		8D7A636724C5568F008FE002 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
 		8D835CF024C14068000A2609 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
 		8D835CF224C14166000A2609 /* CupThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupThumbnail.swift; sourceTree = "<group>"; };
@@ -119,12 +121,13 @@
 			children = (
 				8D4048DA24C01BAE0023FAF5 /* AppDelegate.swift */,
 				8D4048DC24C01BAE0023FAF5 /* SceneDelegate.swift */,
-				8D4048DE24C01BAE0023FAF5 /* ViewController.swift */,
 				8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */,
 				8D4048E024C01BAE0023FAF5 /* Main.storyboard */,
 				8D40490C24C01CCF0023FAF5 /* View.storyboard */,
 				8D40490E24C01F4E0023FAF5 /* Detail.storyboard */,
 				8D40490A24C01C7D0023FAF5 /* Manage.storyboard */,
+				8D7A636724C5568F008FE002 /* DetailViewController.swift */,
+				8D7A636524C544AC008FE002 /* AddParticipantViewController.swift */,
 				8DF3A74924C28FE200F1CC67 /* ParticipantTableViewCell.swift */,
 				8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */,
 				8DF3A74B24C2A73D00F1CC67 /* Match.swift */,
@@ -289,12 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7A636824C5568F008FE002 /* DetailViewController.swift in Sources */,
 				8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */,
-				8D4048DF24C01BAE0023FAF5 /* ViewController.swift in Sources */,
 				8DF3A74C24C2A73D00F1CC67 /* Match.swift in Sources */,
 				8DF3A74824C28F4000F1CC67 /* CreateTourViewController.swift in Sources */,
 				8DF3A74A24C28FE200F1CC67 /* ParticipantTableViewCell.swift in Sources */,
 				8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */,
+				8D7A636624C544AC008FE002 /* AddParticipantViewController.swift in Sources */,
 				8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */,
 				8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */,
 				8D4048DD24C01BAE0023FAF5 /* SceneDelegate.swift in Sources */,
