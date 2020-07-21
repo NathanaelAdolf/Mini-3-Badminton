@@ -44,7 +44,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController
         {
-           // destination.cupTitleLabel.text = choosenCupTitle
+            destination.tempTitle = choosenCupTitle
         }
     }
     

@@ -16,10 +16,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var cupTitleLabel: UILabel!
     @IBOutlet weak var cupCodeLabel: UILabel!
     
+    var tempTitle: String = ""
+    
+    var tempParticipantMatchArray: [Match] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        cupTitleLabel.text = tempTitle
+        
+        let test = DetailViewController()
+        print("test variable: \(test.tempTitle)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,16 +54,9 @@ class DetailViewController: UIViewController {
         if identifier == "cancelToManage"{
             print ("berhasil balik")
         }
+        if let destination = segue.destination as? DetailScheduleViewController
+        {
+            destination.tempParticipantMatchArray = tempParticipantMatchArray
+        }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

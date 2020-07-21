@@ -44,7 +44,7 @@
                                 <rect key="frame" x="20" y="269" width="374" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="aNy-hR-0r1" kind="embed" id="nyW-Jh-I5o"/>
+                                    <segue destination="aNy-hR-0r1" kind="embed" identifier="toDetailSchedule" id="nyW-Jh-I5o"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDu-Mp-kVv">
@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="-352.17391304347831" y="95.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Schedule View Controller-->
         <scene sceneID="JGQ-aa-1nU">
             <objects>
-                <viewController id="aNy-hR-0r1" sceneMemberID="viewController">
+                <viewController id="aNy-hR-0r1" customClass="DetailScheduleViewController" customModule="Mini_Challenge_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U5d-wT-Qv3">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,7 +103,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="104" id="xOF-dQ-bf2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailScheduleCell" rowHeight="104" id="xOF-dQ-bf2" customClass="DetailScheduleTableViewCell" customModule="Mini_Challenge_3" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xOF-dQ-bf2" id="gzI-fF-FvU">
@@ -144,14 +144,25 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="firstPlayerLabel" destination="VxY-EI-fvq" id="czU-Ba-l7M"/>
+                                            <outlet property="secondPlayerLabel" destination="EPh-6c-swG" id="Del-VQ-QQi"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="aNy-hR-0r1" id="T4Q-BG-d0e"/>
+                                    <outlet property="delegate" destination="aNy-hR-0r1" id="C8l-zA-PUj"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hT8-an-t0a"/>
                     </view>
+                    <connections>
+                        <outlet property="scheduleTableView" destination="oyP-vx-jUl" id="4Vo-0K-9tv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yi2-mc-Slh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

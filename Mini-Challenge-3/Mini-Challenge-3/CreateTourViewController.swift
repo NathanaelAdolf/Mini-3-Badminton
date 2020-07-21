@@ -11,6 +11,7 @@ import UIKit
 class CreateTourViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
   
     @IBOutlet weak var participantTableView: UITableView!
+    @IBOutlet weak var nameTextfield: UITextField!
     
     var playerNameListArray: [String] = []
     var participantMatchArray: [Match] = []
@@ -21,6 +22,8 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var randomCodeLabel: UILabel!
+    
+    var tempInputTournamentname: String = ""
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerNameListArray.count
@@ -38,22 +41,22 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
 func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
           
             let headerView = UIView()
-    headerView.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+            headerView.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
 
             let sectionLabel = UILabel(frame: CGRect(x: 0, y: 28, width:
             100, height: 30))
             sectionLabel.font = UIFont(name: "Helvetica", size: 15)
-    sectionLabel.textColor = UIColor.gray
-          sectionLabel.text = "     Participants"
+            sectionLabel.textColor = UIColor.gray
+            sectionLabel.text = "     Participants"
             sectionLabel.sizeToFit()
        
-            addButton = UIButton(frame: CGRect(x: 360, y: 25, width:
+            addButton = UIButton(frame: CGRect(x: 360, y: 20, width:
            30, height: 37))
            let plusSystemImage = UIImage(systemName: "plus.circle")
            addButton.setImage(plusSystemImage, for: .normal)
-    addButton.tintColor = .red
+            addButton.tintColor = .red
        
-       addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+            addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
        
            headerView.addSubview(sectionLabel)
            headerView.addSubview(addButton)
@@ -83,6 +86,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
     }
 
     @IBAction func doneAction(_ sender: Any) {
+        tempInputTournamentname = nameTextfield.text!
         performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
         
@@ -137,6 +141,14 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         return randomString
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailViewController
+        {
+            destination.tempTitle = tempInputTournamentname
+            destination.tempParticipantMatchArray = participantMatchArray
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -160,16 +172,15 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         //generate random code
         randomCodeLabel.text = generateRandomString()
         
-        /*test data dummy
+        //data dummy
         playerNameListArray.append("Nael")
         playerNameListArray.append("Adolf")
         playerNameListArray.append("Sukiman")
         playerNameListArray.append("Yere")
-        playerNameListArray.append("joko")
+
         
- 
         makeMatch(listOfPlayerName:  playerNameListArray)
         printMatch(listOfPlayerMatch: participantMatchArray)
-        */
+        
     }
 }
