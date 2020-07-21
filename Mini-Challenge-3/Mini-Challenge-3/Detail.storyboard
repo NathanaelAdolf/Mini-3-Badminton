@@ -51,7 +51,7 @@
                                 <rect key="frame" x="20" y="269" width="374" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="3Qf-Q3-YRX" kind="embed" id="wwh-jM-gjj"/>
+                                    <segue destination="3Qf-Q3-YRX" kind="embed" identifier="toDetailStandings" id="wwh-jM-gjj"/>
                                 </connections>
                             </containerView>
                             <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zio-sP-GFV">
@@ -168,10 +168,10 @@
             </objects>
             <point key="canvasLocation" x="-730" y="760"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Standings View Controller-->
         <scene sceneID="KqB-eF-zuo">
             <objects>
-                <viewController id="3Qf-Q3-YRX" sceneMemberID="viewController">
+                <viewController id="3Qf-Q3-YRX" customClass="DetailStandingsViewController" customModule="Mini_Challenge_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lYr-Fh-sug">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,7 +185,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WE9-eg-OIP">
-                                            <rect key="frame" x="8" y="12" width="28" height="21"/>
+                                            <rect key="frame" x="5" y="12" width="28" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                             <nil key="textColor"/>
@@ -241,7 +241,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="42" id="xtJ-n7-gRh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailStandingsCell" rowHeight="42" id="xtJ-n7-gRh" customClass="DetailStandingsTableViewCell" customModule="Mini_Challenge_3" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="374" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xtJ-n7-gRh" id="WvD-eQ-jQY">
@@ -249,7 +249,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVe-dg-Vso">
-                                                    <rect key="frame" x="7" y="11" width="27" height="21"/>
+                                                    <rect key="frame" x="5" y="11" width="27" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -303,6 +303,15 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerDiff" destination="fIc-nX-f44" id="hAG-PC-XH9"/>
+                                            <outlet property="playerLoss" destination="r5b-Ty-2w3" id="kLn-PG-iHy"/>
+                                            <outlet property="playerMatchPlayed" destination="MUF-yJ-4hB" id="dTC-bQ-2GC"/>
+                                            <outlet property="playerName" destination="5Ae-C1-hxS" id="LUh-1E-eW0"/>
+                                            <outlet property="playerPts" destination="mdT-vM-Lyd" id="HpZ-ZR-6cH"/>
+                                            <outlet property="playerWin" destination="Q4B-ji-lXD" id="QLB-cR-7le"/>
+                                            <outlet property="position" destination="zVe-dg-Vso" id="bBj-f2-mFy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -311,6 +320,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="MF8-P8-MxX"/>
                     </view>
+                    <connections>
+                        <outlet property="standingsTableView" destination="qTp-tM-Lhm" id="uaP-aS-nHU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xa0-eU-fxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

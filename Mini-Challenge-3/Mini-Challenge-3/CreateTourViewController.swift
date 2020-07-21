@@ -148,6 +148,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         {
             destination.tempTitle = tempInputTournamentname
             destination.tempParticipantMatchArray = participantMatchArray
+            destination.tempParticipantName = playerNameListArray
         }
     }
     

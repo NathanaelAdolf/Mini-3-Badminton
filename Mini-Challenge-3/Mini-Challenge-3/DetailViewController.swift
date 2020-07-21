@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     var tempTitle: String = ""
     
     var tempParticipantMatchArray: [Match] = []
+    var tempParticipantName: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +52,20 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
+        
         if identifier == "cancelToManage"{
             print ("berhasil balik")
         }
         if let destination = segue.destination as? DetailScheduleViewController
         {
+            print("tes schedule")
             destination.tempParticipantMatchArray = tempParticipantMatchArray
+            
+        }
+        if let destination = segue.destination as? DetailStandingsViewController
+        {
+            print("tes standings")
+            destination.playerList = tempParticipantName
         }
     }
 }
