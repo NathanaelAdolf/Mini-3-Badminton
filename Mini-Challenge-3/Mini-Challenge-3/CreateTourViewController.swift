@@ -87,6 +87,8 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
 
     @IBAction func doneAction(_ sender: Any) {
         tempInputTournamentname = nameTextfield.text!
+        makeMatch(listOfPlayerName:  playerNameListArray)
+               printMatch(listOfPlayerMatch: participantMatchArray)
         performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
         
@@ -149,6 +151,11 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         }
     }
     
+    @IBAction func unwindSegueFromModal(sender: UIStoryboardSegue){
+          print("method masuk")
+        participantTableView.reloadData()
+       }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -156,7 +163,6 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -172,15 +178,11 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         //generate random code
         randomCodeLabel.text = generateRandomString()
         
-        //data dummy
+        /*data dummy
         playerNameListArray.append("Nael")
         playerNameListArray.append("Adolf")
         playerNameListArray.append("Sukiman")
-        playerNameListArray.append("Yere")
-
-        
-        makeMatch(listOfPlayerName:  playerNameListArray)
-        printMatch(listOfPlayerMatch: participantMatchArray)
+        playerNameListArray.append("Yere")*/
         
     }
 }

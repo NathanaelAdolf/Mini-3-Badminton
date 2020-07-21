@@ -17,12 +17,13 @@ class AddParticipantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        submitButton.layer.cornerRadius = 5
     }
     
     @IBAction func submitAction(_ sender: Any) {
     
-     dismiss(animated: true)
+     //performSegue(withIdentifier: "unwindSegueFromModal", sender: self)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,7 +31,6 @@ class AddParticipantViewController: UIViewController {
         {
             destination.playerNameListArray.append(inputNameTextField.text!)
             
-            destination.participantTableView.reloadData()
         }
     }
     
