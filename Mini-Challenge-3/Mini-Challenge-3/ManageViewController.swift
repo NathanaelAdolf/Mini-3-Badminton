@@ -147,7 +147,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         tournamentTableView.dataSource = self
         tournamentTableView.delegate = self
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         //data dummy buat table view, nanti dihapus setelah udah bisa dapet data dari API
