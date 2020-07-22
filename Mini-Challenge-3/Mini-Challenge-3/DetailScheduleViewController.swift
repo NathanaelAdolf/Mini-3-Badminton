@@ -29,6 +29,10 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //ke modal buat add score
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 104
     }

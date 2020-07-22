@@ -12,6 +12,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
   
     @IBOutlet weak var participantTableView: UITableView!
     @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var venueTextField: UITextField!
     
     var playerNameListArray: [String] = []
     var participantMatchArray: [Match] = []
@@ -22,8 +23,10 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var randomCodeLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     var tempInputTournamentname: String = ""
+    var tempCodeTour: String = ""
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerNameListArray.count
@@ -86,10 +89,29 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
     }
 
     @IBAction func doneAction(_ sender: Any) {
-        tempInputTournamentname = nameTextfield.text!
-        makeMatch(listOfPlayerName:  playerNameListArray)
-               printMatch(listOfPlayerMatch: participantMatchArray)
-        performSegue(withIdentifier: "toDetailSegue", sender: self)
+        
+        if nameTextfield.text == ""
+        {
+            errorLabel.isHidden = false
+            errorLabel.text = "Tournament name must be filled"
+        }
+        else if venueTextField.text == ""
+        {
+            errorLabel.isHidden = false
+            errorLabel.text = "Tournament Venue must be filled"
+        }
+        else if playerNameListArray.count < 3
+        {
+           errorLabel.isHidden = false
+            errorLabel.text = "Participant must be at least 3 person"
+        }
+        else{
+            tempInputTournamentname = nameTextfield.text!
+            makeMatch(listOfPlayerName:  playerNameListArray)
+            printMatch(listOfPlayerMatch: participantMatchArray)
+            performSegue(withIdentifier: "toDetailSegue", sender: self)
+        }
+       
     }
         
     @objc func addButtonPressed()
@@ -149,6 +171,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
             destination.tempTitle = tempInputTournamentname
             destination.tempParticipantMatchArray = participantMatchArray
             destination.tempParticipantName = playerNameListArray
+            destination.tempCode = tempCodeTour
         }
     }
     
@@ -177,7 +200,10 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         doneButton.layer.cornerRadius = 5
         
         //generate random code
-        randomCodeLabel.text = generateRandomString()
+        tempCodeTour = generateRandomString()
+        randomCodeLabel.text = tempCodeTour
+        
+        errorLabel.isHidden = true
         
         /*data dummy
         playerNameListArray.append("Nael")

@@ -15,7 +15,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var scheduleView: UIView!
     @IBOutlet weak var cupTitleLabel: UILabel!
     @IBOutlet weak var cupCodeLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
     
+    var tempCode: String = ""
     var tempTitle: String = ""
     
     var tempParticipantMatchArray: [Match] = []
@@ -26,6 +28,7 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         cupTitleLabel.text = tempTitle
+        codeLabel.text = tempCode
         
         let test = DetailViewController()
         print("test variable: \(test.tempTitle)")

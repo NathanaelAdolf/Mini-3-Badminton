@@ -170,7 +170,7 @@
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sQt-lr-VzW">
-                                <rect key="frame" x="0.0" y="471" width="414" height="263"/>
+                                <rect key="frame" x="0.0" y="471" width="414" height="252"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -196,6 +196,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klk-mf-nK5">
+                                <rect key="frame" x="35" y="723" width="334" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GSz-Gx-u4z"/>
@@ -209,9 +216,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="4U9-ZP-cpn" id="EJp-I3-oOJ"/>
+                        <outlet property="errorLabel" destination="klk-mf-nK5" id="zjR-5q-zmv"/>
                         <outlet property="nameTextfield" destination="UkU-y7-9r2" id="2th-n1-D8n"/>
                         <outlet property="participantTableView" destination="sQt-lr-VzW" id="5vL-hL-hop"/>
                         <outlet property="randomCodeLabel" destination="Wsc-3o-CuR" id="5tQ-0c-9W5"/>
+                        <outlet property="venueTextField" destination="tFD-ld-mbH" id="Imp-Hk-t3T"/>
                         <segue destination="j3J-aF-fEN" kind="show" identifier="toDetailSegue" id="pr6-DN-yzg"/>
                         <segue destination="Cic-9c-oGa" kind="presentation" identifier="toAddParticipantSegue" id="Tys-Fz-FdZ"/>
                     </connections>
