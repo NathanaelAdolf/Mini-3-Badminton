@@ -178,7 +178,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
     @IBAction func unwindSegueFromModal(sender: UIStoryboardSegue){
           print("method masuk")
         participantTableView.reloadData()
-       }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true

@@ -15,6 +15,8 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var scheduleTableView: UITableView!
     
     var tempString: String = ""
+    var firstPlayer: String = ""
+    var secondPlayer: String = ""
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempParticipantMatchArray.count
@@ -31,6 +33,13 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //ke modal buat add score
+        //let indexPath = scheduleTableView.indexPathForSelectedRow!
+        //let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
+        
+        
+        //print("cc fp= \(currentCell.firstPlayerLabel.text!)")
+        //performSegue(withIdentifier: "updateScore", sender: self)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,14 +55,32 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     }
     
 
-    /*
+    @IBAction func unwindSegueFromScore(sender: UIStoryboardSegue){
+        print("unwind ke schedule")
+        scheduleTableView.reloadData()
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "updateScore" {
+            let dest = segue.destination as! ModalScheduleViewController
+            let indexPath = scheduleTableView.indexPathForSelectedRow!
+            let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
+            
+            firstPlayer = currentCell.firstPlayerLabel.text!
+            secondPlayer = currentCell.secondPlayerLabel.text!
+            
+            
+            dest.firstPlayer = firstPlayer
+            dest.secondPlayer = secondPlayer
+            
+            //print("fp = \(firstPlayer)")
+        }
+        
     }
-    */
+    
 
 }
