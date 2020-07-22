@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateTourViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
-  
+    
     @IBOutlet weak var participantTableView: UITableView!
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var venueTextField: UITextField!
@@ -41,35 +41,35 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-          
-            let headerView = UIView()
-            headerView.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
-
-            let sectionLabel = UILabel(frame: CGRect(x: 0, y: 28, width:
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+        
+        let sectionLabel = UILabel(frame: CGRect(x: 0, y: 28, width:
             100, height: 30))
-            sectionLabel.font = UIFont(name: "Helvetica", size: 15)
-            sectionLabel.textColor = UIColor.gray
-            sectionLabel.text = "     Participants"
-            sectionLabel.sizeToFit()
-       
-            addButton = UIButton(frame: CGRect(x: 360, y: 20, width:
-           30, height: 37))
-           let plusSystemImage = UIImage(systemName: "plus.circle")
-           addButton.setImage(plusSystemImage, for: .normal)
-            addButton.tintColor = .red
-       
-            addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-       
-           headerView.addSubview(sectionLabel)
-           headerView.addSubview(addButton)
-
-            return headerView
-          }
+        sectionLabel.font = UIFont(name: "Helvetica", size: 15)
+        sectionLabel.textColor = UIColor.gray
+        sectionLabel.text = "     Participants"
+        sectionLabel.sizeToFit()
+        
+        addButton = UIButton(frame: CGRect(x: 360, y: 20, width:
+            30, height: 37))
+        let plusSystemImage = UIImage(systemName: "plus.circle")
+        addButton.setImage(plusSystemImage, for: .normal)
+        addButton.tintColor = .red
+        
+        addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
+        
+        headerView.addSubview(sectionLabel)
+        headerView.addSubview(addButton)
+        
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-           return "Participants"
-       }
+        return "Participants"
+    }
     
     //picker view
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,7 +87,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return formatArray.count
     }
-
+    
     @IBAction func doneAction(_ sender: Any) {
         
         if nameTextfield.text == ""
@@ -102,7 +102,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         }
         else if playerNameListArray.count < 3
         {
-           errorLabel.isHidden = false
+            errorLabel.isHidden = false
             errorLabel.text = "Participant must be at least 3 person"
         }
         else{
@@ -111,9 +111,9 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
             printMatch(listOfPlayerMatch: participantMatchArray)
             performSegue(withIdentifier: "toDetailSegue", sender: self)
         }
-       
-    }
         
+    }
+    
     @objc func addButtonPressed()
     {
         print("add button pressed")
@@ -136,7 +136,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
                     }
                     else
                     {
-                    participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex]))
+                        participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex]))
                     }
                 }
             }
@@ -176,7 +176,7 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
     }
     
     @IBAction func unwindSegueFromModal(sender: UIStoryboardSegue){
-          print("method masuk")
+        print("method masuk")
         participantTableView.reloadData()
     }
     
@@ -190,10 +190,17 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+   
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         participantTableView.delegate = self
         participantTableView.dataSource = self
         
@@ -205,11 +212,14 @@ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) ->
         
         errorLabel.isHidden = true
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         /*data dummy
-        playerNameListArray.append("Nael")
-        playerNameListArray.append("Adolf")
-        playerNameListArray.append("Sukiman")
-        playerNameListArray.append("Yere")*/
+         playerNameListArray.append("Nael")
+         playerNameListArray.append("Adolf")
+         playerNameListArray.append("Sukiman")
+         playerNameListArray.append("Yere")*/
         
     }
 }
