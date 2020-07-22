@@ -154,6 +154,8 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 CupThumbnail(title: "July Cup", desc: "At Gor Ciputra"),
                 CupThumbnail(title: "August Cup", desc: "At Jakarta")
             ]
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 }
