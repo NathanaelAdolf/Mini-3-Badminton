@@ -18,6 +18,14 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     var firstPlayer: String = ""
     var secondPlayer: String = ""
     
+    var firstPlayerGame1: String = ""
+    var firstPlayerGame2: String = ""
+    var firstPlayerGame3: String = ""
+    var secondPlayerGame1: String = ""
+    var secondPlayerGame2: String = ""
+    var secondPlayerGame3: String = ""
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempParticipantMatchArray.count
     }
@@ -49,7 +57,8 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
     }
@@ -57,6 +66,12 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
 
     @IBAction func unwindSegueFromScore(sender: UIStoryboardSegue){
         print("unwind ke schedule")
+        
+        print("FP1: \(firstPlayerGame1)")
+        
+        let indexPath = scheduleTableView.indexPathForSelectedRow!
+        let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
+        
         scheduleTableView.reloadData()
     }
     
