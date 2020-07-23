@@ -46,19 +46,19 @@ class DetailViewController: UIViewController {
           navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        if segmented.selectedSegmentIndex == 0 {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.standingsView.alpha = 0
-                self.scheduleView.alpha = 1
-            })
-        } else {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.standingsView.alpha = 1
-                self.scheduleView.alpha = 0
-            })
-        }
-    }
+//    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+//        if segmented.selectedSegmentIndex == 0 {
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.standingsView.alpha = 0
+//                self.scheduleView.alpha = 1
+//            })
+//        } else {
+//            UIView.animate(withDuration: 0.5, animations: {
+//                self.standingsView.alpha = 1
+//                self.scheduleView.alpha = 0
+//            })
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
@@ -75,11 +75,11 @@ class DetailViewController: UIViewController {
             destination.status = self.status
             
         }
-        if let destination = segue.destination as? DetailStandingsViewController
-        {
-            print("tes standings")
-            destination.playerList = tempParticipantName
-            destination.tempCode = tempCode
-        }
+//        if let destination = segue.destination as? DetailStandingsViewController
+//        {
+//            print("tes standings")
+//            destination.playerList = tempParticipantName
+//            destination.tempCode = tempCode
+//        }
     }
 }

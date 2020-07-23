@@ -49,7 +49,8 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
         
     }
     
-
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         loadStandings()
     }
@@ -66,8 +67,14 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
     }
     
+    
     func loadStandings() {
         playerList.removeAll()
+        play.removeAll()
+        win.removeAll()
+        lose.removeAll()
+        dif.removeAll()
+        point.removeAll()
 //        tempParticipantMatchArray.removeAll()
         let headers = [
             "api-host": "http://localhost:8080/badmintour-api/"
@@ -130,6 +137,76 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
         dataTask.resume()
         
     }
+    
+    func loadStandings1() {
+            playerList.removeAll()
+            play.removeAll()
+            win.removeAll()
+            lose.removeAll()
+            dif.removeAll()
+            point.removeAll()
+    //        tempParticipantMatchArray.removeAll()
+            let headers = [
+                "api-host": "http://localhost:8080/badmintour-api/"
+                //                        "api-host": "free-nba.p.rapidapi.com",
+                //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
+            ]
+            
+            //        let id = 1
+            //
+            //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
+            //                                          cachePolicy: .useProtocolCachePolicy,
+            //                                          timeoutInterval: 10.0)
+            let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/players?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
+                                              cachePolicy: .useProtocolCachePolicy,
+                                              timeoutInterval: 10.0)
+            //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
+            //                    cachePolicy: .useProtocolCachePolicy,
+            //                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+            
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if (error != nil) {
+                    print(error as Any)
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse as Any)
+                    if let data = data {
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+                            for item in json {
+                                let jsonTour = item as! [String: AnyObject]
+                                self.playerList.append(jsonTour["nama"] as! String)
+                                self.play.append(jsonTour["play"] as! String)
+                                self.win.append(jsonTour["win"] as! String)
+                                self.lose.append(jsonTour["lose"] as! String)
+                                self.dif.append(jsonTour["dif"] as! String)
+                                self.point.append(jsonTour["point"] as! String)
+                            }
+                            
+                            DispatchQueue.main.async {
+                                self.standingsTableView.reloadData()
+                            }
+                            
+                            //                        let jsonUser = json["user"] as! [String: AnyObject]
+                            
+                            //                        print(jsonUser["fullname"] as! String)
+                            
+                            
+                        }
+                        catch let error {
+                            print(error.localizedDescription)
+                        }
+                        
+                    }
+                }
+            })
+            
+            dataTask.resume()
+            
+        }
     
 
     /*
