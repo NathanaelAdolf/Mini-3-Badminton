@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6AE97CD224C7DF1100ADBC60 /* ViewTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE97CD124C7DF1100ADBC60 /* ViewTourViewController.swift */; };
-		6AE97CD424C7E77B00ADBC60 /* JoinDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AE97CD324C7E77B00ADBC60 /* JoinDetail.storyboard */; };
-		6AE97CD624C7F08D00ADBC60 /* JoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE97CD524C7F08D00ADBC60 /* JoinDetailViewController.swift */; };
-		6AE97CD824C7F27300ADBC60 /* JoinTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE97CD724C7F27300ADBC60 /* JoinTourViewController.swift */; };
 		8D10AD7E24C6875C00E962AF /* DetailScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D10AD7D24C6875C00E962AF /* DetailScheduleViewController.swift */; };
 		8D10AD8024C687A000E962AF /* DetailScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D10AD7F24C687A000E962AF /* DetailScheduleTableViewCell.swift */; };
 		8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4048DA24C01BAE0023FAF5 /* AppDelegate.swift */; };
@@ -53,10 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6AE97CD124C7DF1100ADBC60 /* ViewTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTourViewController.swift; sourceTree = "<group>"; };
-		6AE97CD324C7E77B00ADBC60 /* JoinDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinDetail.storyboard; sourceTree = "<group>"; };
-		6AE97CD524C7F08D00ADBC60 /* JoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinDetailViewController.swift; sourceTree = "<group>"; };
-		6AE97CD724C7F27300ADBC60 /* JoinTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTourViewController.swift; sourceTree = "<group>"; };
 		8D10AD7D24C6875C00E962AF /* DetailScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleViewController.swift; sourceTree = "<group>"; };
 		8D10AD7F24C687A000E962AF /* DetailScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		8D4048D724C01BAE0023FAF5 /* Mini-Challenge-3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mini-Challenge-3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,19 +136,15 @@
 				8DF3A74B24C2A73D00F1CC67 /* Match.swift */,
 				8D835CF224C14166000A2609 /* CupThumbnail.swift */,
 				8D4048E024C01BAE0023FAF5 /* Main.storyboard */,
-				6AE97CD324C7E77B00ADBC60 /* JoinDetail.storyboard */,
 				8D40490C24C01CCF0023FAF5 /* View.storyboard */,
 				8D40490E24C01F4E0023FAF5 /* Detail.storyboard */,
 				8D40490A24C01C7D0023FAF5 /* Manage.storyboard */,
 				8D10AD7D24C6875C00E962AF /* DetailScheduleViewController.swift */,
 				AB93483E24C6D234002D29E0 /* DetailStandingsViewController.swift */,
 				8D7A636724C5568F008FE002 /* DetailViewController.swift */,
-				6AE97CD524C7F08D00ADBC60 /* JoinDetailViewController.swift */,
 				8D7A636524C544AC008FE002 /* AddParticipantViewController.swift */,
 				8D835CF024C14068000A2609 /* ManageViewController.swift */,
-				6AE97CD124C7DF1100ADBC60 /* ViewTourViewController.swift */,
 				8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */,
-				6AE97CD724C7F27300ADBC60 /* JoinTourViewController.swift */,
 				8D4048E324C01BB00023FAF5 /* Assets.xcassets */,
 				8D4048E524C01BB00023FAF5 /* LaunchScreen.storyboard */,
 				8D4048E824C01BB00023FAF5 /* Info.plist */,
@@ -288,7 +276,6 @@
 			files = (
 				8D4048E724C01BB00023FAF5 /* LaunchScreen.storyboard in Resources */,
 				8D40490B24C01C7D0023FAF5 /* Manage.storyboard in Resources */,
-				6AE97CD424C7E77B00ADBC60 /* JoinDetail.storyboard in Resources */,
 				8D40490D24C01CCF0023FAF5 /* View.storyboard in Resources */,
 				8D4048E424C01BB00023FAF5 /* Assets.xcassets in Resources */,
 				8D4048E224C01BAE0023FAF5 /* Main.storyboard in Resources */,
@@ -318,18 +305,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D7A636824C5568F008FE002 /* DetailViewController.swift in Sources */,
-				6AE97CD824C7F27300ADBC60 /* JoinTourViewController.swift in Sources */,
 				8D10AD8024C687A000E962AF /* DetailScheduleTableViewCell.swift in Sources */,
 				8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */,
 				8DF3A74C24C2A73D00F1CC67 /* Match.swift in Sources */,
 				8DF3A74824C28F4000F1CC67 /* CreateTourViewController.swift in Sources */,
 				8DF3A74A24C28FE200F1CC67 /* ParticipantTableViewCell.swift in Sources */,
 				8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */,
-				6AE97CD224C7DF1100ADBC60 /* ViewTourViewController.swift in Sources */,
 				8D7A636624C544AC008FE002 /* AddParticipantViewController.swift in Sources */,
 				8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */,
 				8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */,
-				6AE97CD624C7F08D00ADBC60 /* JoinDetailViewController.swift in Sources */,
 				8D10AD7E24C6875C00E962AF /* DetailScheduleViewController.swift in Sources */,
 				8D4048DD24C01BAE0023FAF5 /* SceneDelegate.swift in Sources */,
 				AB93484124C6D82B002D29E0 /* DetailStandingsTableViewCell.swift in Sources */,
