@@ -13,6 +13,9 @@ class DetailScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var firstPlayerLabel: UILabel!
     @IBOutlet weak var secondPlayerLabel: UILabel!
     
+    @IBOutlet weak var firstScoreLabel: UILabel!
+    @IBOutlet weak var secondScoreLabel: UILabel!
+    @IBOutlet weak var thirdScoreLabel: UILabel!
     @IBOutlet weak var scheduleBackgroundView: UIView!
     
     

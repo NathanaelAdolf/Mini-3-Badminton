@@ -12,6 +12,11 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBOutlet weak var standingsTableView: UITableView!
     var playerList: [String] = []
+    var play: [String] = []
+    var win: [String] = []
+    var lose: [String] = []
+    var dif: [String] = []
+    var point: [String] = []
     var tempCode: String = ""
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,6 +29,12 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
         
         cell.position.text = String(indexPath.row + 1)
         cell.playerName.text = playerList[indexPath.row]
+        
+        cell.playerMatchPlayed.text = play[indexPath.row]
+        cell.playerWin.text = win[indexPath.row]
+        cell.playerLoss.text = lose[indexPath.row]
+        cell.playerDiff.text = dif[indexPath.row]
+        cell.playerPts.text = point[indexPath.row]
         
         if indexPath.row % 2 == 0
         {
@@ -91,7 +102,11 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
                         for item in json {
                             let jsonTour = item as! [String: AnyObject]
                             self.playerList.append(jsonTour["nama"] as! String)
-                            
+                            self.play.append(jsonTour["play"] as! String)
+                            self.win.append(jsonTour["win"] as! String)
+                            self.lose.append(jsonTour["lose"] as! String)
+                            self.dif.append(jsonTour["dif"] as! String)
+                            self.point.append(jsonTour["point"] as! String)
                         }
                         
                         DispatchQueue.main.async {

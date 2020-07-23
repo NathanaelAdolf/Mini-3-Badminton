@@ -36,10 +36,10 @@ class DetailViewController: UIViewController {
         print("test variable: \(test.tempTitle)")
         
         //data dummy
-        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
-        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
-        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
-        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
+//        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
+//        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
+//        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
+//        tempParticipantMatchArray.append(Match(firstPlayer: "Adolf", secondPlayer: "Griffin"))
     }
     
     override func viewWillAppear(_ animated: Bool) {

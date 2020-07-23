@@ -195,7 +195,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                     else
                     {
-                        participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex]))
+                        participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex], status: "0", firstGame1: "0", firstGame2: "0", firstGame3: "0", secondGame1: "0", secondGame2: "0", secondGame3: "0"))
                     }
                 }
             }

@@ -14,6 +14,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var scheduleTableView: UITableView!
     
+    
     var tempString: String = ""
     var firstPlayer: String = ""
     var secondPlayer: String = ""
@@ -39,6 +40,22 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
         
         cell.firstPlayerLabel.text = tempParticipantMatchArray[indexPath.row].firstPlayerName
         cell.secondPlayerLabel.text = tempParticipantMatchArray[indexPath.row].secondPlayerName
+        if tempParticipantMatchArray[indexPath.row].status == "0" {
+            cell.secondScoreLabel.text = "N/A"
+            cell.firstScoreLabel.isHidden = true
+            cell.thirdScoreLabel.isHidden = true
+        }
+        else if tempParticipantMatchArray[indexPath.row].firstGame3 == "0" && tempParticipantMatchArray[indexPath.row].secondGame3 == "0" {
+            cell.firstScoreLabel.text = "\(tempParticipantMatchArray[indexPath.row].firstGame1 ?? "") - \(tempParticipantMatchArray[indexPath.row].secondGame1 ?? "")"
+            cell.secondScoreLabel.text = "\(tempParticipantMatchArray[indexPath.row].firstGame2 ?? "") - \(tempParticipantMatchArray[indexPath.row].secondGame2 ?? "")"
+            cell.thirdScoreLabel.isHidden = true
+        }
+        else {
+            cell.firstScoreLabel.text = "\(tempParticipantMatchArray[indexPath.row].firstGame1 ?? "") - \(tempParticipantMatchArray[indexPath.row].secondGame1 ?? "")"
+            cell.secondScoreLabel.text = "\(tempParticipantMatchArray[indexPath.row].firstGame2 ?? "") - \(tempParticipantMatchArray[indexPath.row].secondGame2 ?? "")"
+             cell.secondScoreLabel.text = "\(tempParticipantMatchArray[indexPath.row].firstGame3 ?? "") - \(tempParticipantMatchArray[indexPath.row].secondGame3 ?? "")"
+        }
+        
         
         return cell
     }
@@ -75,10 +92,14 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
         loadTournamentMatches()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("view appear brother !")
+    }
+    
     
     @IBAction func unwindSegueFromScore(sender: UIStoryboardSegue){
         print("unwind ke schedule")
-        
+        loadTournamentMatches()
         print("FP1: \(firstPlayerGame1)")
         
         let indexPath = scheduleTableView.indexPathForSelectedRow!
@@ -143,7 +164,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
                         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
                         for item in json {
                             let jsonTour = item as! [String: AnyObject]
-                            self.tempParticipantMatchArray.append(Match(firstPlayer: jsonTour["player1"] as! String, secondPlayer: jsonTour["player2"] as! String))
+                            self.tempParticipantMatchArray.append(Match(firstPlayer: jsonTour["player1"] as! String, secondPlayer: jsonTour["player2"] as! String, status: jsonTour["status"] as! String, firstGame1: jsonTour["first_g1"] as! String, firstGame2: jsonTour["first_g2"] as! String, firstGame3: jsonTour["first_g3"] as! String, secondGame1: jsonTour["second_g1"] as! String, secondGame2: jsonTour["second_g2"] as! String, secondGame3: jsonTour["second_g3"] as! String))
                             
                         }
                         
