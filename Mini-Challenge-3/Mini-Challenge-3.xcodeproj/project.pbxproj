@@ -24,6 +24,7 @@
 		8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */; };
 		8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF024C14068000A2609 /* ManageViewController.swift */; };
 		8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CF224C14166000A2609 /* CupThumbnail.swift */; };
+		8DC6669724C7DB4A00797AD2 /* ModalScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC6669624C7DB4A00797AD2 /* ModalScheduleViewController.swift */; };
 		8DF3A74824C28F4000F1CC67 /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */; };
 		8DF3A74A24C28FE200F1CC67 /* ParticipantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3A74924C28FE200F1CC67 /* ParticipantTableViewCell.swift */; };
 		8DF3A74C24C2A73D00F1CC67 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3A74B24C2A73D00F1CC67 /* Match.swift */; };
@@ -72,6 +73,7 @@
 		8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
 		8D835CF024C14068000A2609 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
 		8D835CF224C14166000A2609 /* CupThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupThumbnail.swift; sourceTree = "<group>"; };
+		8DC6669624C7DB4A00797AD2 /* ModalScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalScheduleViewController.swift; sourceTree = "<group>"; };
 		8DF3A74724C28F4000F1CC67 /* CreateTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
 		8DF3A74924C28FE200F1CC67 /* ParticipantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantTableViewCell.swift; sourceTree = "<group>"; };
 		8DF3A74B24C2A73D00F1CC67 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				8D40490C24C01CCF0023FAF5 /* View.storyboard */,
 				8D40490E24C01F4E0023FAF5 /* Detail.storyboard */,
 				8D40490A24C01C7D0023FAF5 /* Manage.storyboard */,
+				8DC6669624C7DB4A00797AD2 /* ModalScheduleViewController.swift */,
 				8D10AD7D24C6875C00E962AF /* DetailScheduleViewController.swift */,
 				AB93483E24C6D234002D29E0 /* DetailStandingsViewController.swift */,
 				8D7A636724C5568F008FE002 /* DetailViewController.swift */,
@@ -313,6 +316,7 @@
 				8D4048DB24C01BAE0023FAF5 /* AppDelegate.swift in Sources */,
 				8D7A636624C544AC008FE002 /* AddParticipantViewController.swift in Sources */,
 				8D835CF324C14166000A2609 /* CupThumbnail.swift in Sources */,
+				8DC6669724C7DB4A00797AD2 /* ModalScheduleViewController.swift in Sources */,
 				8D835CF124C14068000A2609 /* ManageViewController.swift in Sources */,
 				8D10AD7E24C6875C00E962AF /* DetailScheduleViewController.swift in Sources */,
 				8D4048DD24C01BAE0023FAF5 /* SceneDelegate.swift in Sources */,

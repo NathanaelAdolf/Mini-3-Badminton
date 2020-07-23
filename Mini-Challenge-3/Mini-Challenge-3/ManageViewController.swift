@@ -147,13 +147,79 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         tournamentTableView.dataSource = self
         tournamentTableView.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         //data dummy buat table view, nanti dihapus setelah udah bisa dapet data dari API
-        self.tournamentListArray =
-            [
-                CupThumbnail(title: "July Cup", desc: "At Gor Ciputra"),
-                CupThumbnail(title: "August Cup", desc: "At Jakarta")
-            ]
+        loadManageTournament()
+        
+        print(UIDevice.current.identifierForVendor!.uuidString)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    
+    func loadManageTournament() {
+        
+        let headers = [
+            "api-host": "http://localhost:8080/badmintour-api/"
+            //                        "api-host": "free-nba.p.rapidapi.com",
+            //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
+        ]
+        
+        //        let id = 1
+        //
+        //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
+        //                                          cachePolicy: .useProtocolCachePolicy,
+        //                                          timeoutInterval: 10.0)
+        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/manage?badmintour-key=badmintour399669")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
+        //                    cachePolicy: .useProtocolCachePolicy,
+        //                timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+                        for item in json {
+                            let jsonTour = item as! [String: AnyObject]
+                            self.tournamentListArray.append(CupThumbnail(title: jsonTour["tour_name"] as! String, desc: jsonTour["tour_location"] as! String))
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.tournamentTableView.reloadData()
+                        }
+                        
+                        //                        let jsonUser = json["user"] as! [String: AnyObject]
+                        
+                        //                        print(jsonUser["fullname"] as! String)
+                        
+                        
+                    }
+                    catch let error {
+                        print(error.localizedDescription)
+                    }
+                    
+                }
+            }
+        })
+        
+        dataTask.resume()
+        
     }
     
 }

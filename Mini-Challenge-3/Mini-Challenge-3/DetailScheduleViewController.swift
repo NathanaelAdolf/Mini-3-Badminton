@@ -15,6 +15,16 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var scheduleTableView: UITableView!
     
     var tempString: String = ""
+    var firstPlayer: String = ""
+    var secondPlayer: String = ""
+    
+    var firstPlayerGame1: String = ""
+    var firstPlayerGame2: String = ""
+    var firstPlayerGame3: String = ""
+    var secondPlayerGame1: String = ""
+    var secondPlayerGame2: String = ""
+    var secondPlayerGame3: String = ""
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempParticipantMatchArray.count
@@ -29,27 +39,63 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //ke modal buat add score
+        //let indexPath = scheduleTableView.indexPathForSelectedRow!
+        //let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
+        
+        
+        //print("cc fp= \(currentCell.firstPlayerLabel.text!)")
+        //performSegue(withIdentifier: "updateScore", sender: self)
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
+        return 120
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
     }
     
 
-    /*
+    @IBAction func unwindSegueFromScore(sender: UIStoryboardSegue){
+        print("unwind ke schedule")
+        
+        print("FP1: \(firstPlayerGame1)")
+        
+        let indexPath = scheduleTableView.indexPathForSelectedRow!
+        let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
+        
+        scheduleTableView.reloadData()
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "updateScore" {
+            let dest = segue.destination as! ModalScheduleViewController
+            let indexPath = scheduleTableView.indexPathForSelectedRow!
+            let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
+            
+            firstPlayer = currentCell.firstPlayerLabel.text!
+            secondPlayer = currentCell.secondPlayerLabel.text!
+            
+            
+            dest.firstPlayer = firstPlayer
+            dest.secondPlayer = secondPlayer
+            
+            //print("fp = \(firstPlayer)")
+        }
+        
     }
-    */
+    
 
 }
