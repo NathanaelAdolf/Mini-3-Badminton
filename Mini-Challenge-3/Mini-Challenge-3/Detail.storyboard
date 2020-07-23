@@ -368,7 +368,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Send" id="gSG-IT-PAC">
                                             <connections>
-                                                <segue destination="mNk-FY-XCP" kind="unwind" unwindAction="unwindSegueFromScoreWithSender:" id="e6w-H4-gsg"/>
+                                                <segue destination="mNk-FY-XCP" kind="unwind" identifier="unwindToSchedule" unwindAction="unwindSegueFromScoreWithSender:" id="e6w-H4-gsg"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
