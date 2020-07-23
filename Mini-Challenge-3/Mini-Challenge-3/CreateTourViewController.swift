@@ -110,6 +110,29 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             makeMatch(listOfPlayerName:  playerNameListArray)
             printMatch(listOfPlayerMatch: participantMatchArray)
             performSegue(withIdentifier: "toDetailSegue", sender: self)
+            
+            let semaphore = DispatchSemaphore (value: 0)
+
+            let parameters = "tour_name=\(tempInputTournamentname)&tour_location=\(venueTextField.text!)&device_id=\(UIDevice.current.identifierForVendor!.uuidString)&badmintour-key=badmintour399669&tour_code=\(tempCodeTour)"
+            let postData =  parameters.data(using: .utf8)
+
+            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/tournament")!,timeoutInterval: Double.infinity)
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+            request.httpMethod = "POST"
+            request.httpBody = postData
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+              guard let data = data else {
+                print(String(describing: error))
+                return
+              }
+              print(String(data: data, encoding: .utf8)!)
+              semaphore.signal()
+            }
+
+            task.resume()
+            semaphore.wait()
         }
         
     }
@@ -147,6 +170,29 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     {
         for i in 0...participantMatchArray.count - 1 {
             print("\(String(describing: participantMatchArray[i].firstPlayerName)) vs \(String(describing: participantMatchArray[i].secondPlayerName))")
+            
+            let semaphore = DispatchSemaphore (value: 0)
+
+            let parameters = "player1=\( participantMatchArray[i].firstPlayerName! )&player2=\( participantMatchArray[i].secondPlayerName!)&tour_code=\(tempCodeTour)&badmintour-key=badmintour399669"
+            let postData =  parameters.data(using: .utf8)
+
+            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches")!,timeoutInterval: Double.infinity)
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+            request.httpMethod = "POST"
+            request.httpBody = postData
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+              guard let data = data else {
+                print(String(describing: error))
+                return
+              }
+              print(String(data: data, encoding: .utf8)!)
+              semaphore.signal()
+            }
+
+            task.resume()
+            semaphore.wait()
         }
     }
     

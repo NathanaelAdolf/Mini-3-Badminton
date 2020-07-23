@@ -69,6 +69,7 @@ class DetailViewController: UIViewController {
         {
             print("tes schedule")
             destination.tempParticipantMatchArray = self.tempParticipantMatchArray
+            destination.tempCode = tempCode
             
         }
         if let destination = segue.destination as? DetailStandingsViewController

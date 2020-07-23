@@ -17,6 +17,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     var tempString: String = ""
     var firstPlayer: String = ""
     var secondPlayer: String = ""
+    var tempCode: String = ""
     
     var firstPlayerGame1: String = ""
     var firstPlayerGame2: String = ""
@@ -54,16 +55,23 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
         return 120
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
+        
+        print(tempParticipantMatchArray)
+        print(tempCode)
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        loadTournamentMatches()
+    }
+    
+    
     @IBAction func unwindSegueFromScore(sender: UIStoryboardSegue){
         print("unwind ke schedule")
         
@@ -77,7 +85,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "updateScore" {
@@ -97,5 +105,64 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-
+    func loadTournamentMatches() {
+        tempParticipantMatchArray.removeAll()
+        let headers = [
+            "api-host": "https://stefanjivalino9.000webhostapp.com/"
+            //                        "api-host": "free-nba.p.rapidapi.com",
+            //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
+        ]
+        
+        //        let id = 1
+        //
+        //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
+        //                                          cachePolicy: .useProtocolCachePolicy,
+        //                                          timeoutInterval: 10.0)
+        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
+        //                    cachePolicy: .useProtocolCachePolicy,
+        //                timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+                        for item in json {
+                            let jsonTour = item as! [String: AnyObject]
+                            self.tempParticipantMatchArray.append(Match(firstPlayer: jsonTour["player1"] as! String, secondPlayer: jsonTour["player2"] as! String))
+                            
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.scheduleTableView.reloadData()
+                        }
+                        
+                        //                        let jsonUser = json["user"] as! [String: AnyObject]
+                        
+                        //                        print(jsonUser["fullname"] as! String)
+                        
+                        
+                    }
+                    catch let error {
+                        print(error.localizedDescription)
+                    }
+                    
+                }
+            }
+        })
+        
+        dataTask.resume()
+        
+    }
+    
 }

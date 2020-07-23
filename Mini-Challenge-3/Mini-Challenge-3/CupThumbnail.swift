@@ -13,9 +13,11 @@ class CupThumbnail
 {
     var cupTitle: String!
     var cupDesc: String!
+    var cupCode: String!
     
-    init(title: String, desc: String) {
+    init(title: String, desc: String, code: String) {
         self.cupTitle = title
         self.cupDesc = desc
+        self.cupCode = code
     }
 }

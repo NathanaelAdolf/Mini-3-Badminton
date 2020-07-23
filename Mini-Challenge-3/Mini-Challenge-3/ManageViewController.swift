@@ -14,6 +14,8 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var tournamentListArray: [CupThumbnail] = []
     var choosenCupTitle: String = ""
+    var choosenCupCode: String = ""
+    var deviceId: String = ""
     
     var addButton = UIButton()
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -37,6 +39,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
+        choosenCupCode = tournamentListArray[indexPath.row].cupCode
         print(choosenCupTitle)
         performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
@@ -45,6 +48,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let destination = segue.destination as? DetailViewController
         {
             destination.tempTitle = choosenCupTitle
+            destination.tempCode = choosenCupCode
         }
     }
     
@@ -142,18 +146,24 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        tournamentTableView.reloadData()
+//    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadManageTournament()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+//        tournamentTableView.reloadData()
+        deviceId = UIDevice.current.identifierForVendor!.uuidString
         tournamentTableView.dataSource = self
         tournamentTableView.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        //data dummy buat table view, nanti dihapus setelah udah bisa dapet data dari API
-        loadManageTournament()
-        
-        print(UIDevice.current.identifierForVendor!.uuidString)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -164,9 +174,9 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func loadManageTournament() {
-        
+        tournamentListArray.removeAll()
         let headers = [
-            "api-host": "http://localhost:8080/badmintour-api/"
+            "api-host": "https://stefanjivalino9.000webhostapp.com/"
             //                        "api-host": "free-nba.p.rapidapi.com",
             //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
         ]
@@ -176,7 +186,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
         //                                          cachePolicy: .useProtocolCachePolicy,
         //                                          timeoutInterval: 10.0)
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/manage?badmintour-key=badmintour399669")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
@@ -197,7 +207,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
                         for item in json {
                             let jsonTour = item as! [String: AnyObject]
-                            self.tournamentListArray.append(CupThumbnail(title: jsonTour["tour_name"] as! String, desc: jsonTour["tour_location"] as! String))
+                            if jsonTour["device_id"] as! String == self.deviceId {
+                                self.tournamentListArray.append(CupThumbnail(title: jsonTour["tour_name"] as! String, desc: jsonTour["tour_location"] as! String, code: jsonTour["tour_code"] as! String))
+                            }
+                            
                         }
                         
                         DispatchQueue.main.async {
