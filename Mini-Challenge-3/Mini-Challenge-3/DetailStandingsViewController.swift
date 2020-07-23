@@ -24,12 +24,18 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
         cell.position.text = String(indexPath.row + 1)
         cell.playerName.text = playerList[indexPath.row]
         
+        if indexPath.row % 2 == 0
+        {
+            cell.backgroundColor = .white
+        }
+        else
+        {
+            cell.backgroundColor = UIColor.init(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
+        }
+        
         return cell
         
     }
-    
-
-
     
     override func viewDidLoad() {
         print("masuk standings")

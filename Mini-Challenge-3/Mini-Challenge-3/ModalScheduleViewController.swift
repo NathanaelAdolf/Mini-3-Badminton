@@ -32,8 +32,6 @@ class ModalScheduleViewController: UIViewController {
 
         firstPlayerName.text = firstPlayer
         secondPlayerName.text = secondPlayer
-        
-        // Do any additional setup after loading the view.
     }
     
 
@@ -41,25 +39,22 @@ class ModalScheduleViewController: UIViewController {
      //MARK: - Navigation
 
      //In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+        {
         
+            print("skor masuk!")
+            print(firstPlayerGame1.text!)
+            if let dest = segue.destination as? DetailScheduleViewController
+            {
+                dest.firstPlayerGame1 = firstPlayerGame1.text!
+                dest.firstPlayerGame2 = firstPlayerGame2.text!
+                dest.firstPlayerGame3 = firstPlayerGame3.text!
+                dest.secondPlayerGame1 = secondPlayerGame1.text!
+                dest.secondPlayerGame2 = secondPlayerGame2.text!
+                dest.secondPlayerGame3 = secondPlayerGame3.text!
+            }
             
-        print("skor masuk!")
-        print(firstPlayerGame1.text!)
-        if let dest = segue.destination as? DetailScheduleViewController{
-            dest.firstPlayerGame1 = firstPlayerGame1.text!
-            dest.firstPlayerGame2 = firstPlayerGame2.text!
-            dest.firstPlayerGame3 = firstPlayerGame3.text!
-            dest.secondPlayerGame1 = secondPlayerGame1.text!
-            dest.secondPlayerGame2 = secondPlayerGame2.text!
-            dest.secondPlayerGame3 = secondPlayerGame3.text!
-    }
-            
-            
-            
-            
-        
-    }
+        }
     
 
 }

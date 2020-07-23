@@ -15,7 +15,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tournamentListArray: [CupThumbnail] = []
     var choosenCupTitle: String = ""
     
+    var status: String = "Admin"
+    
     var addButton = UIButton()
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 116
     }
@@ -45,6 +48,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let destination = segue.destination as? DetailViewController
         {
             destination.tempTitle = choosenCupTitle
+            destination.status = self.status
         }
     }
     
@@ -132,11 +136,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         performSegue(withIdentifier: "toCreateTourSegue", sender: self)
     }
     
-    @IBAction func unwindToTable(sender: UIStoryboardSegue) {
-            //method buat balikkin dari halaman create ke halaman ini
-        
-
-          }
+    @IBAction func unwindToTable(sender: UIStoryboardSegue)
+    {
+            
+    }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
 
@@ -150,7 +153,6 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        //data dummy buat table view, nanti dihapus setelah udah bisa dapet data dari API
         loadManageTournament()
         
         print(UIDevice.current.identifierForVendor!.uuidString)

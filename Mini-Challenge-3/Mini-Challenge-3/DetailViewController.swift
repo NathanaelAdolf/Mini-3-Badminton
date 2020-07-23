@@ -23,6 +23,8 @@ class DetailViewController: UIViewController {
     var tempParticipantMatchArray: [Match] = []
     var tempParticipantName: [String] = []
     
+    var status: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,6 +71,7 @@ class DetailViewController: UIViewController {
         {
             print("tes schedule")
             destination.tempParticipantMatchArray = self.tempParticipantMatchArray
+            destination.status = self.status
             
         }
         if let destination = segue.destination as? DetailStandingsViewController
