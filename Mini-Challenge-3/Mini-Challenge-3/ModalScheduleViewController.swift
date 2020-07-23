@@ -99,7 +99,20 @@ class ModalScheduleViewController: UIViewController {
     }
     
 
-    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+
+            if validate() == 1{
+                return true
+            }
+            else{
+                let alert = UIAlertController(title: "Error", message: "Invalid score", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                return false
+        }
+        
+    }
 
     
      //MARK: - Navigation
@@ -107,31 +120,7 @@ class ModalScheduleViewController: UIViewController {
      //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
         {
-        
             print("skor masuk!")
-            print(firstPlayerGame1.text!)
-            print(validate())
-            print(segue.identifier!)
-            
-            if validate() == 1 {
-                
-                let dest = segue.destination as! DetailScheduleViewController
-                dest.firstPlayerGame1 = firstPlayerGame1.text!
-                dest.firstPlayerGame2 = firstPlayerGame2.text!
-                dest.firstPlayerGame3 = firstPlayerGame3.text!
-                dest.secondPlayerGame1 = secondPlayerGame1.text!
-                dest.secondPlayerGame2 = secondPlayerGame2.text!
-                dest.secondPlayerGame3 = secondPlayerGame3.text!
-                performSegue(withIdentifier: "unwindToSchedule", sender: self)
-            }
-            else{
-                let alert = UIAlertController(title: "Error", message: "Invalid score", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
-            }
-            
-            /*
              if let dest = segue.destination as? DetailScheduleViewController
              {
                  dest.firstPlayerGame1 = firstPlayerGame1.text!
@@ -141,10 +130,7 @@ class ModalScheduleViewController: UIViewController {
                  dest.secondPlayerGame2 = secondPlayerGame2.text!
                  dest.secondPlayerGame3 = secondPlayerGame3.text!
              }
-             
-             */
-            
-            
+ 
         }
     
 
