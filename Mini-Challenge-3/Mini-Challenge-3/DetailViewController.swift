@@ -76,6 +76,7 @@ class DetailViewController: UIViewController {
         {
             print("tes standings")
             destination.playerList = tempParticipantName
+            destination.tempCode = tempCode
         }
     }
 }
