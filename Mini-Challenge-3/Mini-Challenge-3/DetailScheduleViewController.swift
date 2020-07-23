@@ -26,6 +26,9 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     var secondPlayerGame2: String = ""
     var secondPlayerGame3: String = ""
     
+    var status: String = ""
+    //player g bisa ke halaman modal, klo admin bisa
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempParticipantMatchArray.count
@@ -41,13 +44,15 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //ke modal buat add score
-        //let indexPath = scheduleTableView.indexPathForSelectedRow!
-        //let currentCell = scheduleTableView.cellForRow(at: indexPath) as! DetailScheduleTableViewCell
-        
-        
-        //print("cc fp= \(currentCell.firstPlayerLabel.text!)")
-        //performSegue(withIdentifier: "updateScore", sender: self)
+       
+        if status == "Admin" || status == "admin"
+        {
+            performSegue(withIdentifier: "updateScore", sender: self)
+        }
+        else
+        {
+            //nothing happened because the user is player
+        }
         
     }
     
@@ -58,7 +63,6 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self

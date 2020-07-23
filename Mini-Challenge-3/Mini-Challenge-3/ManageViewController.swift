@@ -17,7 +17,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var choosenCupCode: String = ""
     var deviceId: String = ""
     
+    var status: String = "Admin"
+    
     var addButton = UIButton()
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 116
     }
@@ -49,6 +52,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         {
             destination.tempTitle = choosenCupTitle
             destination.tempCode = choosenCupCode
+            destination.status = self.status
         }
     }
     
@@ -136,11 +140,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         performSegue(withIdentifier: "toCreateTourSegue", sender: self)
     }
     
-    @IBAction func unwindToTable(sender: UIStoryboardSegue) {
-            //method buat balikkin dari halaman create ke halaman ini
-        
-
-          }
+    @IBAction func unwindToTable(sender: UIStoryboardSegue)
+    {
+            
+    }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
 
@@ -164,6 +167,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tournamentTableView.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        loadManageTournament()
+        
+        print(UIDevice.current.identifierForVendor!.uuidString)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     

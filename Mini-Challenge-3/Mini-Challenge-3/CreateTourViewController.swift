@@ -28,6 +28,8 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     var tempInputTournamentname: String = ""
     var tempCodeTour: String = ""
     
+    var status: String = "Admin"
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerNameListArray.count
     }
@@ -252,11 +254,11 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             destination.tempParticipantMatchArray = participantMatchArray
             destination.tempParticipantName = playerNameListArray
             destination.tempCode = tempCodeTour
+            destination.status = self.status
         }
     }
     
     @IBAction func unwindSegueFromModal(sender: UIStoryboardSegue){
-        print("method masuk")
         participantTableView.reloadData()
     }
     
@@ -294,12 +296,6 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        /*data dummy
-         playerNameListArray.append("Nael")
-         playerNameListArray.append("Adolf")
-         playerNameListArray.append("Sukiman")
-         playerNameListArray.append("Yere")*/
         
     }
 }
