@@ -204,17 +204,17 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     func loadTournamentMatches() {
         tempParticipantMatchArray.removeAll()
         let headers = [
-            "api-host": "http://localhost:8080/badmintour-api/"
+            "api-host": "https://stefanjivalino9.000webhostapp.com/"
             //                        "api-host": "free-nba.p.rapidapi.com",
             //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
         ]
         
         //        let id = 1
         //
-        //        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/index.php/user/user?id=1")! as URL,
+        //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
         //                                          cachePolicy: .useProtocolCachePolicy,
         //                                          timeoutInterval: 10.0)
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/matches?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
@@ -270,7 +270,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
             point.removeAll()
     //        tempParticipantMatchArray.removeAll()
             let headers = [
-                "api-host": "http://localhost:8080/badmintour-api/"
+                "api-host": "https://stefanjivalino9.000webhostapp.com/"
                 //                        "api-host": "free-nba.p.rapidapi.com",
                 //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
             ]
@@ -280,7 +280,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
             //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
             //                                          cachePolicy: .useProtocolCachePolicy,
             //                                          timeoutInterval: 10.0)
-            let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/players?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
+            let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
                                               cachePolicy: .useProtocolCachePolicy,
                                               timeoutInterval: 10.0)
             //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,

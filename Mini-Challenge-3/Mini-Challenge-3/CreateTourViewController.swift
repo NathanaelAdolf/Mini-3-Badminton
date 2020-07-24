@@ -126,7 +126,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         let parameters = "tour_name=\(tempInputTournamentname)&tour_location=\(venueTextField.text!)&device_id=\(UIDevice.current.identifierForVendor!.uuidString)&badmintour-key=badmintour399669&tour_code=\(tempCodeTour)"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "http://localhost:8080/badmintour-api/tournament/tournament")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/tournament")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
@@ -152,7 +152,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             let parameters = "badmintour-key=badmintour399669&tour_code=\(tempCodeTour)&nama=\(item)"
             let postData =  parameters.data(using: .utf8)
 
-            var request = URLRequest(url: URL(string: "http://localhost:8080/badmintour-api/tournament/players?badmintour-key=badmintour399669")!,timeoutInterval: Double.infinity)
+            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players?badmintour-key=badmintour399669")!,timeoutInterval: Double.infinity)
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
             request.httpMethod = "POST"
@@ -212,7 +212,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             let parameters = "player1=\( participantMatchArray[i].firstPlayerName! )&player2=\( participantMatchArray[i].secondPlayerName!)&tour_code=\(tempCodeTour)&badmintour-key=badmintour399669"
             let postData =  parameters.data(using: .utf8)
 
-            var request = URLRequest(url: URL(string: "http://localhost:8080/badmintour-api/tournament/matches")!,timeoutInterval: Double.infinity)
+            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches")!,timeoutInterval: Double.infinity)
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
             request.httpMethod = "POST"
