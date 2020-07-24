@@ -66,7 +66,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="joinTournamentTableView" destination="HYa-sp-WSC" id="avK-No-B4y"/>
-                        <outlet property="tournamentTableView" destination="HYa-sp-WSC" id="CSe-LE-gWZ"/>
                         <segue destination="v5W-4r-SBV" kind="show" identifier="toJoinTourSegue" id="iKR-ub-tTB"/>
                         <segue destination="uDc-aW-mFT" kind="show" identifier="toJoinDetailSegue" id="phg-Db-ai1"/>
                     </connections>
@@ -116,7 +115,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneAction:" destination="v5W-4r-SBV" eventType="touchUpInside" id="Mvn-l3-jk8"/>
                                     <action selector="joinAction:" destination="v5W-4r-SBV" eventType="touchUpInside" id="w6f-QF-ndc"/>
                                 </connections>
                             </button>
@@ -151,12 +149,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="codeTextField" destination="QZ4-f0-KVS" id="cVq-kS-sbq"/>
-                        <outlet property="doneButton" destination="Lbc-Cl-GdT" id="zF6-xH-W0x"/>
                         <outlet property="joinButton" destination="Lbc-Cl-GdT" id="w3B-Yn-OdC"/>
                         <outlet property="nameTextField" destination="gjK-Ka-TWw" id="PKD-ZU-T80"/>
-                        <outlet property="nameTextfield" destination="QZ4-f0-KVS" id="0iI-nB-CeB"/>
-                        <segue destination="I4K-ur-UhS" kind="show" id="8e4-mV-vRr"/>
                         <segue destination="uDc-aW-mFT" kind="show" identifier="toJoinDetailSegue" id="fUy-bp-ZsG"/>
+                        <segue destination="GY3-uK-deh" kind="show" id="kWy-Gh-Rpb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lob-uE-QS5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -174,15 +170,26 @@
             </objects>
             <point key="canvasLocation" x="1477" y="488"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--View-->
         <scene sceneID="BFn-BQ-7gb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I4K-ur-UhS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="View" image="eye" catalog="system" id="qaV-I4-1vY"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xk2-1h-TEE"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D9p-Eh-SDb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="D9p-Eh-SDb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.84705882349999995" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.69803921570000005" green="0.8980392157" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.84705882349999995" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -195,7 +202,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q8H-MS-3hL"/>
         <segue reference="phg-Db-ai1"/>
+        <segue reference="Q8H-MS-3hL"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="eye" catalog="system" width="128" height="81"/>
+    </resources>
 </document>
