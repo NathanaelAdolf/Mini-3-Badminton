@@ -169,9 +169,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         deviceId = UIDevice.current.identifierForVendor!.uuidString
         tournamentTableView.dataSource = self
         tournamentTableView.delegate = self
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
+ 
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
