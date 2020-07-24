@@ -41,10 +41,14 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
-        choosenCupCode = tournamentListArray[indexPath.row].cupCode
-        print(choosenCupTitle)
-        performSegue(withIdentifier: "toDetailSegue", sender: self)
+        
+        if tableView == tournamentTableView
+        {
+            choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
+            choosenCupCode = tournamentListArray[indexPath.row].cupCode
+            print(choosenCupTitle)
+            performSegue(withIdentifier: "toDetailSegue", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
