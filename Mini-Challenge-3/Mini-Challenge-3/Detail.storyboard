@@ -15,11 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dPr-lp-NX6">
-                                <rect key="frame" x="0.0" y="-7" width="414" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.84705882352941175" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZF-hQ-vAD">
                                 <rect key="frame" x="20" y="106" width="374" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,8 +43,8 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Cup" id="N9w-Yr-2No">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Vol-l2-G9E">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" image="backTournament" id="Vol-l2-G9E">
+                                            <color key="tintColor" red="0.69803921570000005" green="0.8980392157" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <segue destination="r4h-QI-j3i" kind="unwind" identifier="cancelToManage" unwindAction="unwindWithSegue:" id="zwj-PG-LST"/>
                                             </connections>
@@ -626,6 +621,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backTournament" width="105" height="29"/>
         <image name="line_red" width="72" height="31"/>
         <image name="vline_black" width="17" height="111"/>
     </resources>
