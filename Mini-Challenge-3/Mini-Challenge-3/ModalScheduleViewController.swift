@@ -166,7 +166,7 @@ class ModalScheduleViewController: UIViewController {
         let parameters = "player1=\(firstPlayer)&player2=\(secondPlayer)&badmintour-key=badmintour399669&first_g1=\(firstGame1)&first_g2=\(firstGame2)&first_g3=\(firstGame3)&second_g1=\(secondGame1)&second_g2=\(secondGame2)&second_g3=\(secondGame3)&status=1"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "http://localhost:8080/badmintour-api/tournament/matches")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "PUT"
@@ -191,7 +191,7 @@ class ModalScheduleViewController: UIViewController {
         let parameters = "badmintour-key=badmintour399669&nama=\(winner)&play=1&win=1&lose=0&dif=\(winnerDiff)&point=3"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "http://localhost:8080/badmintour-api/tournament/players")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "PUT"
@@ -216,7 +216,7 @@ class ModalScheduleViewController: UIViewController {
         let parameters = "badmintour-key=badmintour399669&nama=\(losser)&play=1&win=0&lose=1&dif=\(losserDiff)&point=0"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "http://localhost:8080/badmintour-api/tournament/players")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "PUT"
