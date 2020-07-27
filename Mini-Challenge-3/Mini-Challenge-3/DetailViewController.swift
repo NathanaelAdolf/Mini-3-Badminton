@@ -46,6 +46,13 @@ class DetailViewController: UIViewController {
           navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    @IBAction func unwindFromAdd(_ segue: UIStoryboardSegue) {
+    //        tournamentListArray.append(CupThumbnail(title: newTourName, desc: newTourDesc, code: newTourCode))
+    //        jointournamentTableView.reloadData()
+            print(UserDefaults.standard.string(forKey: "tempTourName"))
+            print("unwind")
+        }
+    
 //    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
 //        if segmented.selectedSegmentIndex == 0 {
 //            UIView.animate(withDuration: 0.5, animations: {
