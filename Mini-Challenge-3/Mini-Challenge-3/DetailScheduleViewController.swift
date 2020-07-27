@@ -141,11 +141,13 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
                 self.standingsTableView.alpha = 0
                 self.scheduleTableView.alpha = 1
             })
+            loadTournamentMatches()
         } else {
             UIView.animate(withDuration: 0.5, animations: {
                 self.standingsTableView.alpha = 1
                 self.scheduleTableView.alpha = 0
             })
+            loadStandings()
         }
     }
     

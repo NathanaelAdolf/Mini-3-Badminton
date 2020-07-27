@@ -117,9 +117,17 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
             
-            self.tournamentListArray.remove(at: indexPath.row)
-            self.tournamentTableView.deleteRows(at: [indexPath], with: .automatic)
-            //hapus data yang ada di api
+//            self.tournamentListArray.remove(at: indexPath.row)
+//            self.tournamentTableView.deleteRows(at: [indexPath], with: .automatic)
+            let deleteCode = self.tournamentListArray[indexPath.row].cupCode!
+//            print(deleteCode)
+//
+            self.deleteTournament(code: deleteCode)
+            self.deleteMatches(code: deleteCode)
+            self.deletePlayers(code: deleteCode)
+            
+            self.loadManageTournament()
+//            print(self.tournamentListArray[indexPath.row].cupCode!)
             
         }
         
@@ -138,6 +146,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
          navigationController?.setNavigationBarHidden(false, animated: animated)
+        loadManageTournament()
     }
     
     @IBAction func pressedAction(_ sender: Any) {
@@ -153,13 +162,6 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        tournamentTableView.reloadData()
-//    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        loadManageTournament()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,6 +178,81 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+    
+    func deleteTournament(code: String) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "badmintour-key=badmintour399669&code=\(code)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/deltour")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+    }
+    
+    func deleteMatches(code: String) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "badmintour-key=badmintour399669&code=\(code)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/delmatches")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+    }
+    
+    func deletePlayers(code: String) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "badmintour-key=badmintour399669&code=\(code)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/delplayer")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
     }
     
     

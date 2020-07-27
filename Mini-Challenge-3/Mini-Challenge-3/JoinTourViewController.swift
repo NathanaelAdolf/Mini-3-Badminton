@@ -90,7 +90,6 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: AnyObject]
-                        print(json["tour_name"] as! String)
                         self.tempTourName = json["tour_name"]! as! String
                         self.tempTourDesc = json["tour_location"] as! String
                         self.tempTourCode = tourCode
