@@ -18,6 +18,10 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     var choosenCupCode: String = ""
     var deviceId: String = ""
     
+    var newTourName: String = ""
+    var newTourDesc: String = ""
+    var newTourCode: String = ""
+    
     var status: String = "Player"
     
     var addButton = UIButton()
@@ -124,17 +128,34 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
          navigationController?.setNavigationBarHidden(false, animated: animated)
+        tournamentListArray.removeAll()
+        if UserDefaults.standard.array(forKey: "joinTourName") != nil {
+            let tourName = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+            let tourDesc = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+            let tourCode = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+            var counter: Int = 0
+            for _ in tourName {
+                tournamentListArray.append(CupThumbnail(title: tourName[counter], desc: tourDesc[counter], code: tourCode[counter]))
+                counter += 1
+            }
+            
+            jointournamentTableView.reloadData()
+            
+        }
     }
     
     
     @IBAction func unwindToTable(sender: UIStoryboardSegue)
     {
-            
+        tournamentListArray.append(CupThumbnail(title: newTourName, desc: newTourDesc, code: newTourCode))
+        jointournamentTableView.reloadData()
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-
+        tournamentListArray.append(CupThumbnail(title: newTourName, desc: newTourDesc, code: newTourCode))
+        jointournamentTableView.reloadData()
     }
+    
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        tournamentTableView.reloadData()
@@ -146,84 +167,16 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        tournamentTableView.reloadData()
-//        deviceId = UIDevice.current.identifierForVendor!.uuidString
         jointournamentTableView.dataSource = self
         jointournamentTableView.delegate = self
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
+   
     
     
-//    func loadManageTournament() {
-//        tournamentListArray.removeAll()
-//        let headers = [
-//            "api-host": "https://stefanjivalino9.000webhostapp.com/"
-//            //                        "api-host": "free-nba.p.rapidapi.com",
-//            //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
-//        ]
-//
-//        //        let id = 1
-//        //
-//        //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
-//        //                                          cachePolicy: .useProtocolCachePolicy,
-//        //                                          timeoutInterval: 10.0)
-//        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669")! as URL,
-//                                          cachePolicy: .useProtocolCachePolicy,
-//                                          timeoutInterval: 10.0)
-//        //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
-//        //                    cachePolicy: .useProtocolCachePolicy,
-//        //                timeoutInterval: 10.0)
-//        request.httpMethod = "GET"
-//        request.allHTTPHeaderFields = headers
-//
-//        let session = URLSession.shared
-//        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-//            if (error != nil) {
-//                print(error as Any)
-//            } else {
-//                let httpResponse = response as? HTTPURLResponse
-//                print(httpResponse as Any)
-//                if let data = data {
-//                    do {
-//                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
-//                        for item in json {
-//                            let jsonTour = item as! [String: AnyObject]
-//                            if jsonTour["device_id"] as! String == self.deviceId {
-//                                self.tournamentListArray.append(CupThumbnail(title: jsonTour["tour_name"] as! String, desc: jsonTour["tour_location"] as! String, code: jsonTour["tour_code"] as! String))
-//                            }
-//
-//                        }
-//
-//                        DispatchQueue.main.async {
-//                            self.tournamentTableView.reloadData()
-//                        }
-//
-//                        //                        let jsonUser = json["user"] as! [String: AnyObject]
-//
-//                        //                        print(jsonUser["fullname"] as! String)
-//
-//
-//                    }
-//                    catch let error {
-//                        print(error.localizedDescription)
-//                    }
-//
-//                }
-//            }
-//        })
-//
-//        dataTask.resume()
-//
+    
+
     
 }
     

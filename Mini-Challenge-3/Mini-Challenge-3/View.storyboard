@@ -135,6 +135,9 @@
                                 <state key="normal" title="Join">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneAction:" destination="ru2-EQ-b38" eventType="touchUpInside" id="fBX-qV-ynp"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IQS-dK-45d">
                                 <rect key="frame" x="-10" y="154" width="414" height="1"/>
@@ -195,8 +198,9 @@
                         <outlet property="TournamentCodeTextField" destination="6sF-cR-0jU" id="dCo-Wm-u4h"/>
                         <outlet property="errorLabel" destination="gfK-RJ-hAQ" id="HEg-1q-Q9f"/>
                         <outlet property="joinButton" destination="sWX-fi-3D3" id="FnS-sh-bcL"/>
-                        <segue destination="7jx-e3-T2o" kind="show" id="Qln-62-XSE"/>
+                        <segue destination="7jx-e3-T2o" kind="show" identifier="toViewSegue" id="Qln-62-XSE"/>
                         <segue destination="46W-uz-NO7" kind="show" identifier="toDetailSegue" id="rQ9-0H-zRS"/>
+                        <segue destination="kFP-ME-Flc" kind="unwind" identifier="unwindAdd" unwindAction="unwindFromAdd:" id="Vmx-n0-lVR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XyT-Hw-4Cz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -206,7 +210,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rQ9-0H-zRS"/>
+        <segue reference="BRb-BG-R3h"/>
         <segue reference="Qln-62-XSE"/>
     </inferredMetricsTieBreakers>
     <resources>

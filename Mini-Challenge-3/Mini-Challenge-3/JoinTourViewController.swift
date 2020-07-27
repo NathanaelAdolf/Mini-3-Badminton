@@ -17,10 +17,20 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     
     var tournamentCodeArray: [String] = []
-    var participantNamesArray: [String] = []
-    
     var addButton = UIButton()
-
+    
+    var tournamentListUserDefault: [CupThumbnail] = []
+    var tempListTour: [CupThumbnail] = []
+    
+    var tempTourName: String = ""
+    var tempTourCode: String = ""
+    var tempTourDesc: String = ""
+    
+    var tourNameUD: [String] = []
+    var tourDescUD: [String] = []
+    var tourCodeUD: [String] = []
+    
+    
     @IBOutlet weak var joinButton: UIButton!
     
     
@@ -28,6 +38,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
     
     
     @IBAction func doneAction(_ sender: Any) {
+        getViewData()
         
         if TournamentCodeTextField.text == ""
         {
@@ -39,154 +50,83 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
             errorLabel.isHidden = false
             errorLabel.text = "Player name must be filled"
         }
+        else {
             performSegue(withIdentifier: "toDetailSegue", sender: self)
+            
+        }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController
         {
-            destination.status = self.status
+            destination.tempCode = TournamentCodeTextField.text!
         }
     }
+    
+    func getViewData() {
+        let tourCode = TournamentCodeTextField.text!
+        let headers = [
+            "api-host": "https://stefanjivalino9.000webhostapp.com/"
+            
+        ]
+        
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669&code=\(tourCode)")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        //
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: AnyObject]
+                        print(json["tour_name"] as! String)
+                        self.tempTourName = json["tour_name"]! as! String
+                        self.tempTourDesc = json["tour_location"] as! String
+                        self.tempTourCode = tourCode
+                        
+                        if UserDefaults.standard.array(forKey: "joinTourName") != nil {
+                            self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+                            self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+                            self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                        }
+                        self.tourNameUD.append(json["tour_name"]! as! String)
+                        self.tourDescUD.append(json["tour_location"]! as! String)
+                        self.tourCodeUD.append(json["tour_code"]! as! String)
+                        UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
+                        UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
+                        UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
+                        
+                        
+                        //                        print(self.tourNameUD)
+                        //                        self.tournamentListUserDefault.append(CupThumbnail(title: self.tempTourName, desc: self.tempTourDesc, code: self.tempTourCode))
+                        UserDefaults.standard.set(self.tournamentListUserDefault, forKey: "tempTour")
+                        
+                        
+                    }
+                    catch let error {
+                        print(error.localizedDescription)
+                    }
                     
-//            postTournament()
-//            postPlayers()
-//        }
-//
-//    }
-    
-//    func postTournament() {
-//        let semaphore = DispatchSemaphore (value: 0)
-//
-//        let parameters = "tour_name=\(tempInputTournamentname)&tour_location=\(venueTextField.text!)&device_id=\(UIDevice.current.identifierForVendor!.uuidString)&badmintour-key=badmintour399669&tour_code=\(tempCodeTour)"
-//        let postData =  parameters.data(using: .utf8)
-//
-//        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/tournament")!,timeoutInterval: Double.infinity)
-//        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//
-//        request.httpMethod = "POST"
-//        request.httpBody = postData
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//          guard let data = data else {
-//            print(String(describing: error))
-//            return
-//          }
-//          print(String(data: data, encoding: .utf8)!)
-//          semaphore.signal()
-//        }
-//
-//        task.resume()
-//        semaphore.wait()
-//    }
-//
-//    func postPlayers() {
-//        for item in playerNameListArray {
-//            let semaphore = DispatchSemaphore (value: 0)
-//
-//            let parameters = "badmintour-key=badmintour399669&tour_code=\(tempCodeTour)&nama=\(item)"
-//            let postData =  parameters.data(using: .utf8)
-//
-//            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players?badmintour-key=badmintour399669")!,timeoutInterval: Double.infinity)
-//            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//
-//            request.httpMethod = "POST"
-//            request.httpBody = postData
-//
-//            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//              guard let data = data else {
-//                print(String(describing: error))
-//                return
-//              }
-//              print(String(data: data, encoding: .utf8)!)
-//              semaphore.signal()
-//            }
-//
-//            task.resume()
-//            semaphore.wait()
-//        }
-//
-//    }
-    
-  
+                }
+            }
+        })
+        
+        dataTask.resume()
+        
+    }
     
     
-//    func makeMatch( listOfPlayerName: [String])
-//    {
-//        for firstIndex in 0...listOfPlayerName.count - 1 {
-//
-//            for secondIndex in 0...listOfPlayerName.count - 1 {
-//                if firstIndex == secondIndex {
-//
-//                }
-//                else
-//                {
-//                    if secondIndex < firstIndex
-//                    {
-//                    }
-//                    else
-//                    {
-//                        participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex], status: "0", firstGame1: "0", firstGame2: "0", firstGame3: "0", secondGame1: "0", secondGame2: "0", secondGame3: "0"))
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    func printMatch(listOfPlayerMatch: [Match])
-//    {
-//        for i in 0...participantMatchArray.count - 1 {
-//            print("\(String(describing: participantMatchArray[i].firstPlayerName)) vs \(String(describing: participantMatchArray[i].secondPlayerName))")
-//
-//            let semaphore = DispatchSemaphore (value: 0)
-//
-//            let parameters = "player1=\( participantMatchArray[i].firstPlayerName! )&player2=\( participantMatchArray[i].secondPlayerName!)&tour_code=\(tempCodeTour)&badmintour-key=badmintour399669"
-//            let postData =  parameters.data(using: .utf8)
-//
-//            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches")!,timeoutInterval: Double.infinity)
-//            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//
-//            request.httpMethod = "POST"
-//            request.httpBody = postData
-//
-//            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//              guard let data = data else {
-//                print(String(describing: error))
-//                return
-//              }
-//              print(String(data: data, encoding: .utf8)!)
-//              semaphore.signal()
-//            }
-//
-//            task.resume()
-//            semaphore.wait()
-//        }
-//    }
-//
-//
-//
-
-//
-//    @IBAction func unwindSegueFromModal(sender: UIStoryboardSegue){
-//        participantTableView.reloadData()
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.tabBarController?.tabBar.isHidden = true
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
-//
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.tabBarController?.tabBar.isHidden = false
-//    }
-//
-//    @objc func dismissKeyboard() {
-//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-//        view.endEditing(true)
-//    }
-//
-   
     
     override func viewDidLoad()
     {
@@ -195,10 +135,6 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
         joinButton.layer.cornerRadius = 5
         
         errorLabel.isHidden = true
-//
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
-//
     }
 }
 
