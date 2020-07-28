@@ -38,7 +38,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
     
     
     @IBAction func doneAction(_ sender: Any) {
-        getViewData()
+        
         
         if TournamentCodeTextField.text == ""
         {
@@ -51,8 +51,8 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
             errorLabel.text = "Player name must be filled"
         }
         else {
+            getViewData()
             performSegue(withIdentifier: "toDetailSegue", sender: self)
-            
         }
         
         
