@@ -41,11 +41,12 @@
             <objects>
                 <viewController id="7jx-e3-T2o" customClass="ViewTourViewController" customModule="Mini_Challenge_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TmR-rv-BKe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qIS-0p-Sz6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qIS-0p-Sz6">
                                 <rect key="frame" x="28" y="91" width="359" height="591"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tournamentCell" rowHeight="116" id="TlX-ni-iDd" customClass="TournamentTableViewCell" customModule="Mini_Challenge_3" customModuleProvider="target">
@@ -94,11 +95,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="qIS-0p-Sz6" firstAttribute="leading" secondItem="Dw3-Xc-y3g" secondAttribute="leading" constant="28" id="Czw-EM-EeN"/>
-                            <constraint firstItem="Dw3-Xc-y3g" firstAttribute="trailing" secondItem="qIS-0p-Sz6" secondAttribute="trailing" constant="27" id="QFX-qz-FRT"/>
-                            <constraint firstItem="qIS-0p-Sz6" firstAttribute="top" secondItem="Dw3-Xc-y3g" secondAttribute="top" constant="91" id="hzA-OX-Nqb"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Dw3-Xc-y3g"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tournament" largeTitleDisplayMode="always" id="L1h-sr-92K"/>
@@ -128,7 +124,7 @@
             <objects>
                 <viewController id="ru2-EQ-b38" customClass="JoinTourViewController" customModule="Mini_Challenge_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lbC-kq-5qi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter tournament code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6sF-cR-0jU">
@@ -220,8 +216,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rQ9-0H-zRS"/>
-        <segue reference="Qln-62-XSE"/>
+        <segue reference="BRb-BG-R3h"/>
+        <segue reference="fmc-AW-dmY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="eye" catalog="system" width="128" height="81"/>
