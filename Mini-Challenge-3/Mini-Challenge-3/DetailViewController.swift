@@ -29,7 +29,13 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        cupTitleLabel.text = tempTitle
+        if tempTitle == "" {
+            getName(code: tempCode)
+            print(tempTitle)
+        } else {
+            cupTitleLabel.text = tempTitle
+        }
+        
         codeLabel.text = tempCode
         
         let test = DetailViewController()
@@ -53,19 +59,50 @@ class DetailViewController: UIViewController {
             print("unwind")
         }
     
-//    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-//        if segmented.selectedSegmentIndex == 0 {
-//            UIView.animate(withDuration: 0.5, animations: {
-//                self.standingsView.alpha = 0
-//                self.scheduleView.alpha = 1
-//            })
-//        } else {
-//            UIView.animate(withDuration: 0.5, animations: {
-//                self.standingsView.alpha = 1
-//                self.scheduleView.alpha = 0
-//            })
-//        }
-//    }
+    func getName(code: String) {
+        let headers = [
+            "api-host": "https://stefanjivalino9.000webhostapp.com/"
+            
+        ]
+        
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669&code=\(code)")! as URL,
+                                          cachePolicy: .useProtocolCachePolicy,
+                                          timeoutInterval: 10.0)
+        //
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse as Any)
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: AnyObject]
+                        
+                        self.tempTitle = (json["tour_name"] as? String)!
+                        DispatchQueue.main.async {
+                            self.cupTitleLabel.text? = (json["tour_name"] as? String)!
+                        }
+                        
+                        
+                    }
+                    catch let error {
+                        print(error.localizedDescription)
+                    }
+                    
+                }
+            }
+        })
+        
+        dataTask.resume()
+        cupTitleLabel.text = tempTitle
+        
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
