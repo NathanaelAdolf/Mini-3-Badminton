@@ -202,42 +202,45 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             
                         }
-                        self.tempCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
-                        self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
-                        self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
-                        self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
-                        print(self.tourNameUD)
-                        
-                        
-                        if self.tourCodeUD != [] {
-                            var x:Int = 0
-                            for joinList in self.tempCodeUD {
-                                if self.availTourCode.contains(joinList) {
-                                    print("yes")
-                                }
-                                else {
-                                    self.tourNameUD.remove(at: x)
-                                    self.tourDescUD.remove(at: x)
-                                    self.tourCodeUD.remove(at: x)
-                                }
-                                x += 1
-                            }
-                            UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
-                            UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
-                            UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
-                            if UserDefaults.standard.array(forKey: "joinTourName") != nil {
-                                let tourName = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
-                                let tourDesc = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
-                                let tourCode = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
-                                var counter: Int = 0
-                                for _ in tourName {
-                                    self.tournamentListArray.append(CupThumbnail(title: tourName[counter], desc: tourDesc[counter], code: tourCode[counter]))
-                                    counter += 1
-                                }
+                        if UserDefaults.standard.array(forKey: "joinTourCode") != nil {
+                            self.tempCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                            self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+                            self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+                            self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                            print(self.tourNameUD)
                             
+                            
+                            if self.tourCodeUD != [] {
+                                var x:Int = 0
+                                for joinList in self.tempCodeUD {
+                                    if self.availTourCode.contains(joinList) {
+                                        print("yes")
+                                    }
+                                    else {
+                                        self.tourNameUD.remove(at: x)
+                                        self.tourDescUD.remove(at: x)
+                                        self.tourCodeUD.remove(at: x)
+                                    }
+                                    x += 1
+                                }
+                                UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
+                                UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
+                                UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
+                                if UserDefaults.standard.array(forKey: "joinTourName") != nil {
+                                    let tourName = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+                                    let tourDesc = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+                                    let tourCode = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                                    var counter: Int = 0
+                                    for _ in tourName {
+                                        self.tournamentListArray.append(CupThumbnail(title: tourName[counter], desc: tourDesc[counter], code: tourCode[counter]))
+                                        counter += 1
+                                    }
                                 
+                                    
+                                }
                             }
                         }
+                        
                         
                         
                         DispatchQueue.main.async {
