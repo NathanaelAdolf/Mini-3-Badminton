@@ -202,14 +202,15 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
                             
                             
                         }
-                        self.tempCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
-                        self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
-                        self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
-                        self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
-                        print(self.tourNameUD)
                         
                         
-                        if self.tourCodeUD != [] {
+                        
+                        if UserDefaults.standard.array(forKey: "joinTourCode") != nil {
+                            self.tempCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                            self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+                            self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+                            self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                            print(self.tourNameUD)
                             var x:Int = 0
                             for joinList in self.tempCodeUD {
                                 if self.availTourCode.contains(joinList) {
