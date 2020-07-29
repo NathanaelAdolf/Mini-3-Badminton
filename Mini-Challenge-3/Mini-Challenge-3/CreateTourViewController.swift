@@ -16,7 +16,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var playerNameListArray: [String] = []
     var participantMatchArray: [Match] = []
-    let formatArray = ["Round Robin", "Knockout"]
+    let formatArray = ["Round Robin"]
     var tableRowIndex: Int = 0
     
     var addButton = UIButton()
@@ -29,6 +29,8 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     var tempCodeTour: String = ""
     
     var status: String = "Admin"
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerNameListArray.count
@@ -91,7 +93,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func doneAction(_ sender: Any) {
-        
+
         if nameTextfield.text == ""
         {
             errorLabel.isHidden = false
@@ -108,19 +110,26 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             errorLabel.text = "Participant must be at least 3 person"
         }
         else{
+          
             tempInputTournamentname = nameTextfield.text!
+            
             makeMatch(listOfPlayerName:  playerNameListArray)
             printMatch(listOfPlayerMatch: participantMatchArray)
+            
             performSegue(withIdentifier: "toDetailSegue", sender: self)
             
-            
-            postTournament()
-            postPlayers()
+                self.postTournament()
+                self.postPlayers()
         }
-        
     }
     
     func postTournament() {
+        DispatchQueue.main.async {
+
+            self.activityIndicator.hidesWhenStopped = true
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
         let semaphore = DispatchSemaphore (value: 0)
 
         let parameters = "tour_name=\(tempInputTournamentname)&tour_location=\(venueTextField.text!)&device_id=\(UIDevice.current.identifierForVendor!.uuidString)&badmintour-key=badmintour399669&tour_code=\(tempCodeTour)"
@@ -147,6 +156,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func postPlayers() {
         for item in playerNameListArray {
+            
             let semaphore = DispatchSemaphore (value: 0)
 
             let parameters = "badmintour-key=badmintour399669&tour_code=\(tempCodeTour)&nama=\(item)"
@@ -171,6 +181,9 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             semaphore.wait()
         }
         
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     @objc func addButtonPressed()
@@ -178,7 +191,6 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         print("add button pressed")
         performSegue(withIdentifier: "toAddParticipantSegue", sender: self)
     }
-    
     
     func makeMatch( listOfPlayerName: [String])
     {
@@ -282,8 +294,6 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
           return .lightContent
       }
     
-   
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -302,5 +312,9 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        activityIndicator.isHidden = true
+        
     }
+    
+    
 }

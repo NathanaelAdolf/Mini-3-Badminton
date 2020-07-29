@@ -150,12 +150,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
         dataTask.resume()
         
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle
-      {
-          return .lightContent
-      }
-    
+        
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -163,6 +158,12 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
         joinButton.layer.cornerRadius = 5
         
         errorLabel.isHidden = true
+        
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    {
+        return.lightContent
     }
 }
 

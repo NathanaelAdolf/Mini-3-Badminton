@@ -165,14 +165,28 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+    
 //        tournamentTableView.reloadData()
         deviceId = UIDevice.current.identifierForVendor!.uuidString
         tournamentTableView.dataSource = self
         tournamentTableView.delegate = self
  
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = UIColor.init(red: 216/255, green: 29/255, blue: 36/255, alpha: 1)
+            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    {
+        return .lightContent
     }
     
     @objc func dismissKeyboard() {

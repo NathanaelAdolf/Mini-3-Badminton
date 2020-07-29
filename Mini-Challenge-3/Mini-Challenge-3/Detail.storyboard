@@ -33,7 +33,7 @@
                                 <rect key="frame" x="-90" y="189" width="414" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
-                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="backTournament" backIndicatorTransitionMaskImage="back" translatesAutoresizingMaskIntoConstraints="NO" id="zio-sP-GFV">
+                            <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" backIndicatorImage="backTournament" backIndicatorTransitionMaskImage="back" translatesAutoresizingMaskIntoConstraints="NO" id="zio-sP-GFV">
                                 <rect key="frame" x="0.0" y="35" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.1137254902" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -82,7 +82,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYV-29-D18" sceneMemberID="firstResponder"/>
                 <exit id="r4h-QI-j3i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-352.17391304347831" y="95.758928571428569"/>
+            <point key="canvasLocation" x="557.97101449275362" y="95.758928571428569"/>
         </scene>
         <!--Detail Schedule View Controller-->
         <scene sceneID="JGQ-aa-1nU">
