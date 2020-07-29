@@ -134,8 +134,10 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
     {
         super.viewDidLoad()
         
-        joinButton.layer.cornerRadius = 5
+        self.hideKeyboardWhenTappedAround()
         
+        joinButton.layer.cornerRadius = 5
+    
         errorLabel.isHidden = true
     }
 }

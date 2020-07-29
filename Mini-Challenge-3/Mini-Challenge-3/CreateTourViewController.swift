@@ -272,10 +272,10 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
+//    @objc func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle
       {
