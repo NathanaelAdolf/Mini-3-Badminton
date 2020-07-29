@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinTourViewController: UIViewController, UITableViewDelegate {
+class JoinTourViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var TournamentCodeTextField: UITextField!
     
@@ -52,6 +52,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
             errorLabel.isHidden = false
             errorLabel.text = "Player name must be filled"
         }
+            
         else {
             getViewData()
 
@@ -66,6 +67,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
             destination.tempCode = TournamentCodeTextField.text!
         }
     }
+    
     
     func getViewData() {
         let tourCode = TournamentCodeTextField.text!
@@ -155,6 +157,9 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
     {
         super.viewDidLoad()
         
+        self.TournamentCodeTextField.delegate = self
+        self.ParticipantNameTextField.delegate = self
+        
         self.hideKeyboardWhenTappedAround()
         
         joinButton.layer.cornerRadius = 5
@@ -162,6 +167,12 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
         errorLabel.isHidden = true
         
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+               self.view.endEditing(true)
+               return false
+           }
+           
     
     override var preferredStatusBarStyle: UIStatusBarStyle
     {
