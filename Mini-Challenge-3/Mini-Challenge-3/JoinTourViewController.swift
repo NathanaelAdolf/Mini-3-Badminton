@@ -30,6 +30,8 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
     var tourDescUD: [String] = []
     var tourCodeUD: [String] = []
     
+    var apiStatus: String = ""
+    
     
     @IBOutlet weak var joinButton: UIButton!
     
@@ -52,7 +54,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
         }
         else {
             getViewData()
-            performSegue(withIdentifier: "toDetailSegue", sender: self)
+
         }
         
         
@@ -89,27 +91,51 @@ class JoinTourViewController: UIViewController, UITableViewDelegate {
                 print(httpResponse as Any)
                 if let data = data {
                     do {
+                        
                         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: AnyObject]
-                        self.tempTourName = json["tour_name"]! as! String
-                        self.tempTourDesc = json["tour_location"] as! String
-                        self.tempTourCode = tourCode
-                        
-                        if UserDefaults.standard.array(forKey: "joinTourName") != nil {
-                            self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
-                            self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
-                            self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                        if json["status"] as! String != "failed" {
+                            self.tempTourName = json["tour_name"]! as! String
+                            self.tempTourDesc = json["tour_location"] as! String
+                            self.tempTourCode = tourCode
+                            
+                            if UserDefaults.standard.array(forKey: "joinTourName") != nil {
+                                self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+                                self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+                                self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                            }
+                            
+                            
+                            
+                            self.tourNameUD.append(json["tour_name"]! as! String)
+                            self.tourDescUD.append(json["tour_location"]! as! String)
+                            self.tourCodeUD.append(json["tour_code"]! as! String)
+                            UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
+                            UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
+                            UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
+                            
+                            
+                            //                        print(self.tourNameUD)
+                            //                        self.tournamentListUserDefault.append(CupThumbnail(title: self.tempTourName, desc: self.tempTourDesc, code: self.tempTourCode))
+                            UserDefaults.standard.set(self.tournamentListUserDefault, forKey: "tempTour")
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "toDetailSegue", sender: JoinTourViewController.self)
+                                
+                            }
+                            
                         }
-                        self.tourNameUD.append(json["tour_name"]! as! String)
-                        self.tourDescUD.append(json["tour_location"]! as! String)
-                        self.tourCodeUD.append(json["tour_code"]! as! String)
-                        UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
-                        UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
-                        UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
+                        else {
+                            self.apiStatus = json["status"] as! String
+                            print(self.apiStatus)
+                            DispatchQueue.main.async {
+                                self.errorLabel.isHidden = false
+                                self.errorLabel.text = "Tournament code not found"
+                            }
+                            
+                            
+                            
+                            //            performSegue(withIdentifier: "toDetailSegue", sender: self)
+                        }
                         
-                        
-                        //                        print(self.tourNameUD)
-                        //                        self.tournamentListUserDefault.append(CupThumbnail(title: self.tempTourName, desc: self.tempTourDesc, code: self.tempTourCode))
-                        UserDefaults.standard.set(self.tournamentListUserDefault, forKey: "tempTour")
                         
                         
                     }
