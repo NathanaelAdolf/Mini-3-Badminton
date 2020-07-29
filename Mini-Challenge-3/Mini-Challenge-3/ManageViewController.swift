@@ -14,6 +14,8 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var tournamentListArray: [CupThumbnail] = []
     var choosenCupTitle: String = ""
+    var choosenCupCode: String = ""
+    var deviceId: String = ""
     
     var status: String = "Admin"
     
@@ -39,15 +41,21 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
-        print(choosenCupTitle)
-        performSegue(withIdentifier: "toDetailSegue", sender: self)
+        
+        if tableView == tournamentTableView
+        {
+            choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
+            choosenCupCode = tournamentListArray[indexPath.row].cupCode
+            print(choosenCupTitle)
+            performSegue(withIdentifier: "toDetailSegue", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailViewController
         {
             destination.tempTitle = choosenCupTitle
+            destination.tempCode = choosenCupCode
             destination.status = self.status
         }
     }
@@ -109,9 +117,17 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
             
-            self.tournamentListArray.remove(at: indexPath.row)
-            self.tournamentTableView.deleteRows(at: [indexPath], with: .automatic)
-            //hapus data yang ada di api
+//            self.tournamentListArray.remove(at: indexPath.row)
+//            self.tournamentTableView.deleteRows(at: [indexPath], with: .automatic)
+            let deleteCode = self.tournamentListArray[indexPath.row].cupCode!
+//            print(deleteCode)
+//
+            self.deleteTournament(code: deleteCode)
+            self.deleteMatches(code: deleteCode)
+            self.deletePlayers(code: deleteCode)
+            
+            self.loadManageTournament()
+//            print(self.tournamentListArray[indexPath.row].cupCode!)
             
         }
         
@@ -130,6 +146,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
          navigationController?.setNavigationBarHidden(false, animated: animated)
+        loadManageTournament()
     }
     
     @IBAction func pressedAction(_ sender: Any) {
@@ -145,17 +162,16 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+//        tournamentTableView.reloadData()
+        deviceId = UIDevice.current.identifierForVendor!.uuidString
         tournamentTableView.dataSource = self
         tournamentTableView.delegate = self
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        loadManageTournament()
-        
-        print(UIDevice.current.identifierForVendor!.uuidString)
+ 
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -164,11 +180,86 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.endEditing(true)
     }
     
+    func deleteTournament(code: String) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "badmintour-key=badmintour399669&code=\(code)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/deltour")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+    }
+    
+    func deleteMatches(code: String) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "badmintour-key=badmintour399669&code=\(code)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/delmatches")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+    }
+    
+    func deletePlayers(code: String) {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "badmintour-key=badmintour399669&code=\(code)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/delplayer")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+    }
+    
     
     func loadManageTournament() {
-        
+        tournamentListArray.removeAll()
         let headers = [
-            "api-host": "http://localhost:8080/badmintour-api/"
+            "api-host": "https://stefanjivalino9.000webhostapp.com/"
             //                        "api-host": "free-nba.p.rapidapi.com",
             //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
         ]
@@ -178,7 +269,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
         //                                          cachePolicy: .useProtocolCachePolicy,
         //                                          timeoutInterval: 10.0)
-        let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/manage?badmintour-key=badmintour399669")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,
@@ -199,7 +290,10 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
                         for item in json {
                             let jsonTour = item as! [String: AnyObject]
-                            self.tournamentListArray.append(CupThumbnail(title: jsonTour["tour_name"] as! String, desc: jsonTour["tour_location"] as! String))
+                            if jsonTour["device_id"] as! String == self.deviceId {
+                                self.tournamentListArray.append(CupThumbnail(title: jsonTour["tour_name"] as! String, desc: jsonTour["tour_location"] as! String, code: jsonTour["tour_code"] as! String))
+                            }
+                            
                         }
                         
                         DispatchQueue.main.async {

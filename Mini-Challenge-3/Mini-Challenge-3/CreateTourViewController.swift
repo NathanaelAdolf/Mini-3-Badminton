@@ -112,6 +112,63 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             makeMatch(listOfPlayerName:  playerNameListArray)
             printMatch(listOfPlayerMatch: participantMatchArray)
             performSegue(withIdentifier: "toDetailSegue", sender: self)
+            
+            
+            postTournament()
+            postPlayers()
+        }
+        
+    }
+    
+    func postTournament() {
+        let semaphore = DispatchSemaphore (value: 0)
+
+        let parameters = "tour_name=\(tempInputTournamentname)&tour_location=\(venueTextField.text!)&device_id=\(UIDevice.current.identifierForVendor!.uuidString)&badmintour-key=badmintour399669&tour_code=\(tempCodeTour)"
+        let postData =  parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/tournament")!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+          semaphore.signal()
+        }
+
+        task.resume()
+        semaphore.wait()
+    }
+    
+    func postPlayers() {
+        for item in playerNameListArray {
+            let semaphore = DispatchSemaphore (value: 0)
+
+            let parameters = "badmintour-key=badmintour399669&tour_code=\(tempCodeTour)&nama=\(item)"
+            let postData =  parameters.data(using: .utf8)
+
+            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players?badmintour-key=badmintour399669")!,timeoutInterval: Double.infinity)
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+            request.httpMethod = "POST"
+            request.httpBody = postData
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+              guard let data = data else {
+                print(String(describing: error))
+                return
+              }
+              print(String(data: data, encoding: .utf8)!)
+              semaphore.signal()
+            }
+
+            task.resume()
+            semaphore.wait()
         }
         
     }
@@ -138,7 +195,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                     else
                     {
-                        participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex]))
+                        participantMatchArray.append(Match(firstPlayer: listOfPlayerName[firstIndex], secondPlayer: listOfPlayerName[secondIndex], status: "0", firstGame1: "0", firstGame2: "0", firstGame3: "0", secondGame1: "0", secondGame2: "0", secondGame3: "0"))
                     }
                 }
             }
@@ -149,6 +206,29 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     {
         for i in 0...participantMatchArray.count - 1 {
             print("\(String(describing: participantMatchArray[i].firstPlayerName)) vs \(String(describing: participantMatchArray[i].secondPlayerName))")
+            
+            let semaphore = DispatchSemaphore (value: 0)
+
+            let parameters = "player1=\( participantMatchArray[i].firstPlayerName! )&player2=\( participantMatchArray[i].secondPlayerName!)&tour_code=\(tempCodeTour)&badmintour-key=badmintour399669"
+            let postData =  parameters.data(using: .utf8)
+
+            var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matches")!,timeoutInterval: Double.infinity)
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+            request.httpMethod = "POST"
+            request.httpBody = postData
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+              guard let data = data else {
+                print(String(describing: error))
+                return
+              }
+              print(String(data: data, encoding: .utf8)!)
+              semaphore.signal()
+            }
+
+            task.resume()
+            semaphore.wait()
         }
     }
     
@@ -196,6 +276,11 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle
+      {
+          return .lightContent
+      }
     
    
     
