@@ -23,7 +23,7 @@ class DetailScheduleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         scheduleBackgroundView.layer.cornerRadius = 5
         scheduleBackgroundView.backgroundColor = UIColor.init(red: 244/255, green: 244/255, blue: 244/255, alpha: 1)
-        
+  
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

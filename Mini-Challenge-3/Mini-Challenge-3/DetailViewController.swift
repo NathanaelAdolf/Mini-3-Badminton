@@ -41,24 +41,13 @@ class DetailViewController: UIViewController {
         let test = DetailViewController()
         print("test variable: \(test.tempTitle)")
         
-        /*
-        if #available(iOS 13.0, *) {
-              let navBarAppearance = UINavigationBarAppearance()
-              navBarAppearance.configureWithOpaqueBackground()
-              navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-              navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-              navBarAppearance.backgroundColor = UIColor.init(red: 216/255, green: 29/255, blue: 36/255, alpha: 1)
-              self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-              self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-          }
-            belum tau kenapa g bisa, kyknya karena navbar di halaman ini dibuatnya manual d
-         */
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
           navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+   
     
     @IBAction func unwindFromAdd(_ segue: UIStoryboardSegue) {
     //        tournamentListArray.append(CupThumbnail(title: newTourName, desc: newTourDesc, code: newTourCode))
@@ -110,6 +99,11 @@ class DetailViewController: UIViewController {
         dataTask.resume()
         cupTitleLabel.text = tempTitle
         
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    {
+        return .lightContent
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
