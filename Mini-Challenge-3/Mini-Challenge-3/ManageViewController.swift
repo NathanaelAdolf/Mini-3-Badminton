@@ -80,12 +80,12 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
            sectionLabel.text = "Tournament Created"
              sectionLabel.sizeToFit()
         
-             addButton = UIButton(frame: CGRect(x: 335, y: 23, width:
+        addButton = UIButton(frame: CGRect(x: tableView.frame.size.width - 27, y: 23, width:
             30, height: 37))
             let plusSystemImage = UIImage(systemName: "plus.circle")
             addButton.setImage(plusSystemImage, for: .normal)
             addButton.tintColor = .red
-        
+       
         addButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
         
             headerView.addSubview(sectionLabel)

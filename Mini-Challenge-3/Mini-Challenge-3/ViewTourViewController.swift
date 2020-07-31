@@ -87,7 +87,7 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
         sectionLabel.text = "Tournament Joined"
         sectionLabel.sizeToFit()
         
-        addButton = UIButton(frame: CGRect(x: 335, y: 23, width:
+        addButton = UIButton(frame: CGRect(x: tableView.frame.size.width - 27, y: 23, width:
             30, height: 37))
         let plusSystemImage = UIImage(systemName: "plus.circle")
         addButton.setImage(plusSystemImage, for: .normal)

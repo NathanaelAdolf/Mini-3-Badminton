@@ -57,7 +57,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         sectionLabel.text = "     Participants"
         sectionLabel.sizeToFit()
         
-        addButton = UIButton(frame: CGRect(x: 360, y: 20, width:
+        addButton = UIButton(frame: CGRect(x: tableView.frame.size.width - 40, y: 20, width:
             30, height: 37))
         let plusSystemImage = UIImage(systemName: "plus.circle")
         addButton.setImage(plusSystemImage, for: .normal)
