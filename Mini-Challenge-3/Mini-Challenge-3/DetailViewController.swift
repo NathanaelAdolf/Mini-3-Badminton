@@ -101,11 +101,6 @@ class DetailViewController: UIViewController {
         
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle
-    {
-        return .lightContent
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         

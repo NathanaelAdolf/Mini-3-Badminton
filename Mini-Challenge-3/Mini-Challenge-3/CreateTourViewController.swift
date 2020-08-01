@@ -276,7 +276,6 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -288,12 +287,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
 //        //Causes the view (or one of its embedded text fields) to resign the first responder status.
 //        view.endEditing(true)
 //    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle
-      {
-          return .lightContent
-      }
-    
+        
     override func viewDidLoad()
     {
         super.viewDidLoad()
