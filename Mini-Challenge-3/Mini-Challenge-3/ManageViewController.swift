@@ -183,16 +183,6 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle
-    {
-        return .lightContent
-    }
-    
-//    @objc func dismissKeyboard() {
-//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-//        view.endEditing(true)
-//    }
-    
     func deleteTournament(code: String) {
         let semaphore = DispatchSemaphore (value: 0)
 

@@ -75,12 +75,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9uf-kf-BIT" firstAttribute="trailing" secondItem="RDu-Mp-kVv" secondAttribute="trailing" constant="20" id="4dh-2g-Dxe"/>
-                            <constraint firstItem="9uf-kf-BIT" firstAttribute="bottom" secondItem="ydb-HM-0wG" secondAttribute="bottom" constant="47" id="4xO-Pj-Nz8"/>
                             <constraint firstItem="1qQ-GU-Cb4" firstAttribute="top" secondItem="2ZF-hQ-vAD" secondAttribute="bottom" constant="8" id="8hN-6p-btx"/>
                             <constraint firstItem="RDu-Mp-kVv" firstAttribute="top" secondItem="ZFJ-VH-P1Z" secondAttribute="bottom" constant="12" id="Eaq-h2-q7t"/>
                             <constraint firstItem="fIf-QR-bcs" firstAttribute="leading" secondItem="9uf-kf-BIT" secondAttribute="leading" id="KnH-gA-yXW"/>
                             <constraint firstItem="ydb-HM-0wG" firstAttribute="leading" secondItem="9uf-kf-BIT" secondAttribute="leading" constant="20" id="MtN-3j-dym"/>
                             <constraint firstItem="RDu-Mp-kVv" firstAttribute="leading" secondItem="9uf-kf-BIT" secondAttribute="leading" constant="20" id="T0C-J2-X06"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ydb-HM-0wG" secondAttribute="bottom" constant="47" id="VWI-zc-4H2"/>
                             <constraint firstItem="9uf-kf-BIT" firstAttribute="bottom" secondItem="RDu-Mp-kVv" secondAttribute="bottom" constant="47" id="W2t-A3-XHO"/>
                             <constraint firstItem="ydb-HM-0wG" firstAttribute="top" secondItem="ZFJ-VH-P1Z" secondAttribute="bottom" constant="12" id="ZOs-X0-kJa"/>
                             <constraint firstItem="1qQ-GU-Cb4" firstAttribute="leading" secondItem="9uf-kf-BIT" secondAttribute="leading" constant="20" id="ZPU-qy-dvO"/>
@@ -117,11 +117,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AtG-Jf-Odd">
-                                <rect key="frame" x="0.0" y="56" width="374" height="509"/>
+                                <rect key="frame" x="0.0" y="56" width="374" height="570"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="509" id="Mm9-kg-j6w"/>
-                                </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="EJR-1C-ZMg">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -347,10 +344,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oyP-vx-jUl">
-                                <rect key="frame" x="0.0" y="56" width="374" height="509"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="509" id="oWC-RV-15h"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="56" width="374" height="570"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailScheduleCell" rowHeight="119" id="xOF-dQ-bf2" customClass="DetailScheduleTableViewCell" customModule="Tourneo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="119"/>
@@ -479,6 +473,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="hT8-an-t0a" firstAttribute="bottom" secondItem="oyP-vx-jUl" secondAttribute="bottom" id="7eJ-sQ-gFD"/>
+                            <constraint firstItem="AtG-Jf-Odd" firstAttribute="bottom" secondItem="hT8-an-t0a" secondAttribute="bottom" id="851-7y-sKm"/>
                             <constraint firstItem="oyP-vx-jUl" firstAttribute="trailing" secondItem="hT8-an-t0a" secondAttribute="trailing" id="GUc-4V-wbA"/>
                             <constraint firstItem="bTb-1M-cEf" firstAttribute="leading" secondItem="U5d-wT-Qv3" secondAttribute="leading" id="JV5-Vq-RsU"/>
                             <constraint firstItem="AtG-Jf-Odd" firstAttribute="leading" secondItem="hT8-an-t0a" secondAttribute="leading" id="MbR-hX-oMv"/>
@@ -500,22 +496,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yi2-mc-Slh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-843.47826086956525" y="756.69642857142856"/>
+            <point key="canvasLocation" x="-843.47826086956525" y="756.02678571428567"/>
         </scene>
         <!--Detail Standings View Controller-->
         <scene sceneID="KqB-eF-zuo">
             <objects>
                 <viewController storyboardIdentifier="detailStandings" id="3Qf-Q3-YRX" customClass="DetailStandingsViewController" customModule="Tourneo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lYr-Fh-sug">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="626"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qTp-tM-Lhm">
-                                <rect key="frame" x="0.0" y="36" width="374" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qTp-tM-Lhm">
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="626"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="519" id="f7L-bm-EU9"/>
-                                </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="rrN-R7-gh1">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -700,17 +693,18 @@
                             <constraint firstItem="qTp-tM-Lhm" firstAttribute="trailing" secondItem="MF8-P8-MxX" secondAttribute="trailing" id="9HM-uV-Zxg"/>
                             <constraint firstItem="qTp-tM-Lhm" firstAttribute="leading" secondItem="MF8-P8-MxX" secondAttribute="leading" id="COx-kP-Bh9"/>
                             <constraint firstItem="qTp-tM-Lhm" firstAttribute="top" secondItem="lYr-Fh-sug" secondAttribute="top" id="O5h-aG-kGz"/>
+                            <constraint firstAttribute="bottom" secondItem="qTp-tM-Lhm" secondAttribute="bottom" id="uHR-sH-Pl1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MF8-P8-MxX"/>
                     </view>
-                    <size key="freeformSize" width="374" height="896"/>
+                    <size key="freeformSize" width="374" height="626"/>
                     <connections>
                         <outlet property="standingsTableView" destination="qTp-tM-Lhm" id="uaP-aS-nHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xa0-eU-fxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="865"/>
+            <point key="canvasLocation" x="189.85507246376812" y="864.50892857142856"/>
         </scene>
         <!--Modal Schedule View Controller-->
         <scene sceneID="Rrr-Lw-MgR">

@@ -19,7 +19,7 @@ class TournamentTableViewCell: UITableViewCell {
         super.awakeFromNib()
     
        // View to hold the CAGradientLayer.
-       let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 359, height: 104))
+        let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: gradientBackground.frame.size.width, height: gradientBackground.frame.size.height))
         
        // Initialize gradient layer.
        let gradientLayer: CAGradientLayer = CAGradientLayer()
@@ -30,7 +30,7 @@ class TournamentTableViewCell: UITableViewCell {
     
         
        // Set frame of gradient layer.
-       gradientLayer.frame = view.bounds
+        gradientLayer.frame = view.frame
 
        // Color at the top of the gradient.
         let topColor: CGColor = UIColor.init(red: 234/255, green: 61/255, blue: 61/255, alpha: 1).cgColor
@@ -51,9 +51,9 @@ class TournamentTableViewCell: UITableViewCell {
         view.layer.insertSublayer(gradientLayer, at: 0)
         
         gradientBackground.insertSubview(view, at: 0)
+        
+        print("gradient background width : \(gradientBackground.frame.size.width)")
        
-        
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
