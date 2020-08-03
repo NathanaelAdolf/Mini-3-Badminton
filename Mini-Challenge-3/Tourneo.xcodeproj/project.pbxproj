@@ -23,6 +23,7 @@
 		8D40490B24C01C7D0023FAF5 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490A24C01C7D0023FAF5 /* Manage.storyboard */; };
 		8D40490D24C01CCF0023FAF5 /* View.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490C24C01CCF0023FAF5 /* View.storyboard */; };
 		8D40490F24C01F4E0023FAF5 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490E24C01F4E0023FAF5 /* Detail.storyboard */; };
+		8D6962CA24D7AE3D00CEC7F3 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D40490A24C01C7D0023FAF5 /* Manage.storyboard */; };
 		8D7A636624C544AC008FE002 /* AddParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7A636524C544AC008FE002 /* AddParticipantViewController.swift */; };
 		8D7A636824C5568F008FE002 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7A636724C5568F008FE002 /* DetailViewController.swift */; };
 		8D835CEF24C13F79000A2609 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D835CEE24C13F79000A2609 /* TournamentTableViewCell.swift */; };
@@ -309,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D6962CA24D7AE3D00CEC7F3 /* Manage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

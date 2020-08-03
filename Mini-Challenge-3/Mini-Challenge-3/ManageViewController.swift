@@ -96,13 +96,12 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let edit = editAction(at: indexPath)
         let delete = deleteAction(at: indexPath)
         
-        return UISwipeActionsConfiguration(actions: [delete,edit])
+        return UISwipeActionsConfiguration(actions: [delete])
     }
     
-    func editAction(at indexPath: IndexPath)-> UIContextualAction
+   /* func editAction(at indexPath: IndexPath)-> UIContextualAction
     {
         let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
             completion(true)
@@ -111,7 +110,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         action.backgroundColor = .gray
         
         return action
-    }
+    }*/
     
     func deleteAction(at indexPath: IndexPath)->UIContextualAction
     {
