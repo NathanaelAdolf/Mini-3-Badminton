@@ -271,6 +271,7 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
         jointournamentTableView.dataSource = self
         jointournamentTableView.delegate = self

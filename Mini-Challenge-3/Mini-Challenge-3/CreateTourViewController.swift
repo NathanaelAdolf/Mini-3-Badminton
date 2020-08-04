@@ -291,6 +291,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
         participantTableView.delegate = self
         participantTableView.dataSource = self

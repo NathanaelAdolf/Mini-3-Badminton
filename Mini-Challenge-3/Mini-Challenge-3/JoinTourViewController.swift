@@ -156,6 +156,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate, UITextField
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
         self.TournamentCodeTextField.delegate = self
         self.ParticipantNameTextField.delegate = self

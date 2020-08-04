@@ -164,6 +164,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
     
 //        tournamentTableView.reloadData()
         deviceId = UIDevice.current.identifierForVendor!.uuidString
