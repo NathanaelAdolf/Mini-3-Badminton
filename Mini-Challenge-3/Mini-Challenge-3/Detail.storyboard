@@ -501,6 +501,7 @@
         <!--Detail Standings View Controller-->
         <scene sceneID="KqB-eF-zuo">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xa0-eU-fxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="detailStandings" id="3Qf-Q3-YRX" customClass="DetailStandingsViewController" customModule="Tourneo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lYr-Fh-sug">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="626"/>
@@ -702,7 +703,6 @@
                         <outlet property="standingsTableView" destination="qTp-tM-Lhm" id="uaP-aS-nHU"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xa0-eU-fxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="189.85507246376812" y="864.50892857142856"/>
         </scene>

@@ -37,6 +37,8 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.cupTitleLabel.text = tournamentListArray[indexPath.row].cupTitle
         cell.cupDescriptionLabel.text = tournamentListArray[indexPath.row].cupDesc
         
+        cell.backgroundView = cellBackgroundView(cellWidth: cell)
+   
         return cell
     }
     
@@ -101,17 +103,6 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
-   /* func editAction(at indexPath: IndexPath)-> UIContextualAction
-    {
-        let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            completion(true)
-        }
-        action.image = UIImage(systemName: "pencil")
-        action.backgroundColor = .gray
-        
-        return action
-    }*/
-    
     func deleteAction(at indexPath: IndexPath)->UIContextualAction
     {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
@@ -134,6 +125,44 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         action.backgroundColor = .red
         
         return action
+    }
+    
+    func cellBackgroundView(cellWidth: UITableViewCell)->UIView
+    {
+        let tempView = UIView()
+        tempView.frame = CGRect(x: 0, y: 10, width: cellWidth.frame.size.width, height: cellWidth.frame.size.height - 10)
+        
+        tempView.layer.cornerRadius = 5
+               
+          // Initialize gradient layer.
+          let gradientLayer: CAGradientLayer = CAGradientLayer()
+           gradientLayer.cornerRadius = 8
+           gradientLayer.shadowRadius = 1
+           gradientLayer.shadowOpacity = 0.2
+           gradientLayer.shadowOffset = CGSize(width: 5, height: 3)
+       
+          // Set frame of gradient layer.
+          gradientLayer.frame = tempView.frame
+
+          // Color at the top of the gradient.
+           let topColor: CGColor = UIColor.init(red: 234/255, green: 61/255, blue: 61/255, alpha: 1).cgColor
+
+          // Color at the bottom of the gradient.
+          let bottomColor: CGColor = UIColor.init(red: 157/255, green: 104/255, blue: 104/255, alpha: 1).cgColor
+
+          // Set colors.
+          gradientLayer.colors = [topColor, bottomColor]
+
+          // Set start point.
+          gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+
+          // Set end point.
+          gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+
+          // Insert gradient layer into view's layer heirarchy.
+           tempView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        return tempView
     }
     
    @objc func addButtonPressed()

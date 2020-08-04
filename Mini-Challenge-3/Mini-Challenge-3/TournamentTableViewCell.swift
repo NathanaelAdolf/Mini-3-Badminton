@@ -13,11 +13,11 @@ class TournamentTableViewCell: UITableViewCell {
     @IBOutlet weak var cupTitleLabel: UILabel!
     @IBOutlet weak var cupDescriptionLabel: UILabel!
     
-    @IBOutlet weak var gradientBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     
+        /*
        // View to hold the CAGradientLayer.
         let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: gradientBackground.frame.size.width, height: gradientBackground.frame.size.height))
         
@@ -53,6 +53,8 @@ class TournamentTableViewCell: UITableViewCell {
         gradientBackground.insertSubview(view, at: 0)
         
         print("gradient background width : \(gradientBackground.frame.size.width)")
+        gradientBackground.backgroundColor = .black
+ */
        
     }
 

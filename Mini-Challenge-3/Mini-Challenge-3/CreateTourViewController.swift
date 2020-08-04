@@ -110,7 +110,9 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             errorLabel.text = "Participant must be at least 3 person"
         }
         else{
-          
+            errorLabel.isHidden = false
+            errorLabel.text = "Processing..."
+            
             tempInputTournamentname = nameTextfield.text!
             
             makeMatch(listOfPlayerName:  playerNameListArray)
