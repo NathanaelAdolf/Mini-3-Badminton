@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="height" constant="667" id="BfE-QP-ebe"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tournamentCell" rowHeight="116" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-XR-H5q" customClass="TournamentTableViewCell" customModule="Tourneo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tournamentCell" rowHeight="116" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-XR-H5q" customClass="TournamentTableViewCell" customModule="Tourneo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="358" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kjG-XR-H5q" id="Sps-dn-uZi">
@@ -195,11 +195,6 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4XH-Xn-vsb">
-                                <rect key="frame" x="183" y="419" width="39" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U9-ZP-cpn">
                                 <rect key="frame" x="74" y="769" width="265" height="48"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,7 +251,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicator" destination="4XH-Xn-vsb" id="cnk-f6-GQQ"/>
                         <outlet property="doneButton" destination="4U9-ZP-cpn" id="EJp-I3-oOJ"/>
                         <outlet property="errorLabel" destination="klk-mf-nK5" id="zjR-5q-zmv"/>
                         <outlet property="nameTextfield" destination="UkU-y7-9r2" id="2th-n1-D8n"/>
@@ -377,8 +371,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fYL-5H-TuA"/>
-        <segue reference="SnM-MR-HhX"/>
+        <segue reference="pr6-DN-yzg"/>
         <segue reference="9wJ-eq-dtD"/>
     </inferredMetricsTieBreakers>
     <resources>
