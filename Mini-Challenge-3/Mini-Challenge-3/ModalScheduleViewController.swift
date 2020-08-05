@@ -73,6 +73,9 @@ class ModalScheduleViewController: UIViewController {
             return 0
         }
         
+        gameP1 = 0
+        gameP2 = 0
+        
         let w11 = Int(firstPlayerGame1.text!)!
         let w21 = Int(secondPlayerGame1.text!)!
         
@@ -87,6 +90,8 @@ class ModalScheduleViewController: UIViewController {
             return 0
         }
         
+        print("gameP1 = \(gameP1), gameP2 = \(gameP2)")
+        
         let w12 = Int(firstPlayerGame2.text!)!
         let w22 = Int(secondPlayerGame2.text!)!
         
@@ -100,6 +105,7 @@ class ModalScheduleViewController: UIViewController {
             //error
             return 0
         }
+        print("gameP1 = \(gameP1), gameP2 = \(gameP2)")
         
         if ((gameP1 == 2 || gameP2 == 2) && (firstPlayerGame3.text != "" || secondPlayerGame3.text != "")) {
             //error
@@ -120,7 +126,7 @@ class ModalScheduleViewController: UIViewController {
                 return 0
             }
         }
-        
+        print("FINAL RES >> gameP1 = \(gameP1), gameP2 = \(gameP2)")
         return 1
     }
     
