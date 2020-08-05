@@ -58,6 +58,7 @@ class ModalScheduleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
 
         firstPlayerName.text = firstPlayer
         secondPlayerName.text = secondPlayer

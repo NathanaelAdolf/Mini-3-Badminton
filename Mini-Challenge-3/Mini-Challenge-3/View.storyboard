@@ -58,47 +58,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjX-IA-MCM">
-                                                    <rect key="frame" x="0.0" y="6" width="359" height="104"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cup Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0Q-Ru-3DI">
-                                                            <rect key="frame" x="61" y="18" width="236" height="27"/>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cup description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqf-Nd-zSX">
-                                                            <rect key="frame" x="61" y="58" width="236" height="27"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="27" id="bC6-tO-a16"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cup Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0Q-Ru-3DI">
+                                                    <rect key="frame" x="61" y="26" width="237" height="27"/>
                                                     <constraints>
-                                                        <constraint firstItem="s0Q-Ru-3DI" firstAttribute="top" secondItem="zjX-IA-MCM" secondAttribute="top" constant="18" id="1aF-gk-U2i"/>
-                                                        <constraint firstAttribute="trailing" secondItem="uqf-Nd-zSX" secondAttribute="trailing" constant="62" id="5yt-mA-CWJ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="s0Q-Ru-3DI" secondAttribute="trailing" constant="62" id="FDg-Np-6em"/>
-                                                        <constraint firstItem="uqf-Nd-zSX" firstAttribute="leading" secondItem="zjX-IA-MCM" secondAttribute="leading" constant="61" id="Gae-rN-gde"/>
-                                                        <constraint firstItem="s0Q-Ru-3DI" firstAttribute="leading" secondItem="zjX-IA-MCM" secondAttribute="leading" constant="61" id="MlU-U5-bys"/>
-                                                        <constraint firstItem="uqf-Nd-zSX" firstAttribute="top" secondItem="s0Q-Ru-3DI" secondAttribute="bottom" constant="13" id="TiD-15-Xlv"/>
+                                                        <constraint firstAttribute="height" constant="27" id="Wkl-f1-baI"/>
                                                     </constraints>
-                                                </view>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cup description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqf-Nd-zSX">
+                                                    <rect key="frame" x="61" y="61" width="237" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="Ash-3h-vPS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="zjX-IA-MCM" secondAttribute="trailing" id="Ieb-vO-fAl"/>
-                                                <constraint firstAttribute="bottom" secondItem="zjX-IA-MCM" secondAttribute="bottom" constant="6" id="lCh-ux-PoE"/>
-                                                <constraint firstItem="zjX-IA-MCM" firstAttribute="leading" secondItem="oMA-EF-s8j" secondAttribute="leading" id="skI-9L-5Sl"/>
-                                                <constraint firstItem="zjX-IA-MCM" firstAttribute="top" secondItem="oMA-EF-s8j" secondAttribute="top" constant="6" id="wEo-qj-Hkl"/>
+                                                <constraint firstItem="s0Q-Ru-3DI" firstAttribute="top" secondItem="oMA-EF-s8j" secondAttribute="topMargin" constant="15" id="57d-PM-jjq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="s0Q-Ru-3DI" secondAttribute="trailing" constant="41" id="HCg-7y-fZp"/>
+                                                <constraint firstItem="uqf-Nd-zSX" firstAttribute="leading" secondItem="oMA-EF-s8j" secondAttribute="leadingMargin" constant="41" id="Z7P-Ba-edS"/>
+                                                <constraint firstItem="s0Q-Ru-3DI" firstAttribute="leading" secondItem="oMA-EF-s8j" secondAttribute="leadingMargin" constant="41" id="flB-XS-E1H"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uqf-Nd-zSX" secondAttribute="trailing" constant="41" id="s11-VT-Gk9"/>
+                                                <constraint firstItem="uqf-Nd-zSX" firstAttribute="top" secondItem="s0Q-Ru-3DI" secondAttribute="bottom" constant="8" id="w49-6E-T6a"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cupDescriptionLabel" destination="uqf-Nd-zSX" id="sVh-uc-3Yy"/>
                                             <outlet property="cupTitleLabel" destination="s0Q-Ru-3DI" id="0zT-qK-Ol9"/>
-                                            <outlet property="gradientBackground" destination="zjX-IA-MCM" id="3X9-JD-ztr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

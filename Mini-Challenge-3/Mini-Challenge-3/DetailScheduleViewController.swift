@@ -153,6 +153,7 @@ class DetailScheduleViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self

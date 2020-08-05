@@ -30,6 +30,8 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var status: String = "Admin"
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerNameListArray.count
     }
@@ -108,24 +110,27 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             errorLabel.text = "Participant must be at least 3 person"
         }
         else{
-          
+            errorLabel.isHidden = false
+            errorLabel.text = "Processing..."
+            
             tempInputTournamentname = nameTextfield.text!
             
             makeMatch(listOfPlayerName:  playerNameListArray)
             printMatch(listOfPlayerMatch: participantMatchArray)
-
+            
             performSegue(withIdentifier: "toDetailSegue", sender: self)
             
                 self.postTournament()
                 self.postPlayers()
-
         }
     }
     
     func postTournament() {
-        self.showSpinner()
         DispatchQueue.main.async {
-            
+
+            self.activityIndicator.hidesWhenStopped = true
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
         }
         let semaphore = DispatchSemaphore (value: 0)
 
@@ -179,8 +184,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         DispatchQueue.main.async {
-            //self.activityIndicator.stopAnimating()
-            self.removeSpinner()
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -289,6 +293,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         
         participantTableView.delegate = self
         participantTableView.dataSource = self
@@ -304,7 +309,7 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        
+        activityIndicator.isHidden = true
         
     }
     
