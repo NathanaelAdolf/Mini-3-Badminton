@@ -177,10 +177,6 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
             
             self.checkTournament()
             
-            
-            //            self.tournamentTableView.deleteRows(at: [indexPath], with: .automatic)
-            //hapus data yang ada di api
-            
         }
         
         action.image = UIImage(systemName: "trash")
@@ -198,9 +194,15 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isUserInteractionEnabled = false
+        
+        _ = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+                   print("delayed message")
+               }
+        
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
         
     }
-    
     
     @IBAction func unwindToTable(sender: UIStoryboardSegue)
     {
@@ -303,8 +305,8 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func viewDidAppear(_ animated: Bool) {
+
         checkTournament()
-        
         
     }
     

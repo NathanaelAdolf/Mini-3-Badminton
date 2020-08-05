@@ -173,7 +173,17 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+         self.tabBarController?.tabBar.isUserInteractionEnabled = false
          navigationController?.setNavigationBarHidden(false, animated: animated)
+        self.tabBarController?.tabBar.isUserInteractionEnabled = false
+        _ = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { (timer) in
+            print("delayed message")
+        }
+        
+        self.tabBarController?.tabBar.isUserInteractionEnabled = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadManageTournament()
     }
     
