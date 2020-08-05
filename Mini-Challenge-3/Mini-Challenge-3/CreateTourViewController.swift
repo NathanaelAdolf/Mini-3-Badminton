@@ -118,20 +118,33 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             makeMatch(listOfPlayerName:  playerNameListArray)
             printMatch(listOfPlayerMatch: participantMatchArray)
             
-            performSegue(withIdentifier: "toDetailSegue", sender: self)
+            self.activityIndicator.hidesWhenStopped = true
+            self.activityIndicator.isHidden = false
             
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.activityIndicator.startAnimating()
+                print("time consuming data")
                 self.postTournament()
                 self.postPlayers()
+                self.activityIndicator.stopAnimating()
+                self.performSegue(withIdentifier: "toDetailSegue", sender: self)
+            }
+                
+            
+            
         }
     }
     
     func postTournament() {
+        
+        /*
         DispatchQueue.main.async {
 
             self.activityIndicator.hidesWhenStopped = true
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
         }
+        */
         let semaphore = DispatchSemaphore (value: 0)
 
         let parameters = "tour_name=\(tempInputTournamentname)&tour_location=\(venueTextField.text!)&device_id=\(UIDevice.current.identifierForVendor!.uuidString)&badmintour-key=badmintour399669&tour_code=\(tempCodeTour)"
@@ -183,9 +196,6 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
             semaphore.wait()
         }
         
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-        }
     }
     
     @objc func addButtonPressed()
