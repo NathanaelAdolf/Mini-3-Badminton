@@ -59,6 +59,8 @@ class ModalScheduleViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        
+        self.hideKeyboardWhenTappedAround()
 
         firstPlayerGame1.delegate = self
         firstPlayerGame2.delegate = self
