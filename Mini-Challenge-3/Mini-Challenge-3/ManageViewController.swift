@@ -46,10 +46,13 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if tableView == tournamentTableView
         {
-            choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
-            choosenCupCode = tournamentListArray[indexPath.row].cupCode
-            print(choosenCupTitle)
-            performSegue(withIdentifier: "toDetailSegue", sender: self)
+            if indexPath.row >= 0 && indexPath.row < tournamentListArray.count
+           {
+               choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
+               choosenCupCode = tournamentListArray[indexPath.row].cupCode
+
+               performSegue(withIdentifier: "toDetailSegue", sender: self)
+           }
         }
     }
     

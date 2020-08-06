@@ -54,10 +54,14 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
-        choosenCupCode = tournamentListArray[indexPath.row].cupCode
-        print(choosenCupTitle)
-        performSegue(withIdentifier: "toDetailSegue", sender: self)
+
+        if indexPath.row >= 0 && indexPath.row < tournamentListArray.count
+       {
+           choosenCupTitle = tournamentListArray[indexPath.row].cupTitle
+           choosenCupCode = tournamentListArray[indexPath.row].cupCode
+
+           performSegue(withIdentifier: "toDetailSegue", sender: self)
+       }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
