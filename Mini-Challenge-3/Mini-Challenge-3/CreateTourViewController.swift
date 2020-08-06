@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateTourViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
+class CreateTourViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var participantTableView: UITableView!
     @IBOutlet weak var nameTextfield: UITextField!
@@ -305,6 +305,9 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         
+        self.nameTextfield.delegate = self
+        self.venueTextField.delegate = self
+        
         participantTableView.delegate = self
         participantTableView.dataSource = self
         
@@ -321,6 +324,11 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         
         activityIndicator.isHidden = true
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     

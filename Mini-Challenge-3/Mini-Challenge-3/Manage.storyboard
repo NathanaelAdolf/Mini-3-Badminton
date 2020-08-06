@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="height" constant="667" id="BfE-QP-ebe"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tournamentCell" rowHeight="116" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-XR-H5q" customClass="TournamentTableViewCell" customModule="Tourneo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tournamentCell" rowHeight="116" translatesAutoresizingMaskIntoConstraints="NO" id="kjG-XR-H5q" customClass="TournamentTableViewCell" customModule="Tourneo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="358" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kjG-XR-H5q" id="Sps-dn-uZi">
@@ -126,7 +126,7 @@
                                     <constraint firstAttribute="height" constant="34" id="OHa-3S-qJX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2r-46-kG1">
                                 <rect key="frame" x="0.0" y="203" width="414" height="105"/>
@@ -158,7 +158,7 @@
                                     <constraint firstAttribute="height" constant="34" id="Jcy-D5-aPV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sQt-lr-VzW">
                                 <rect key="frame" x="0.0" y="348" width="414" height="360"/>
@@ -288,7 +288,7 @@
                                             <constraint firstAttribute="height" constant="34" id="Owv-KA-nf1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqX-ik-Gvc">
                                         <rect key="frame" x="129" y="178" width="156" height="54"/>
@@ -377,8 +377,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fYL-5H-TuA"/>
-        <segue reference="SnM-MR-HhX"/>
+        <segue reference="pr6-DN-yzg"/>
         <segue reference="9wJ-eq-dtD"/>
     </inferredMetricsTieBreakers>
     <resources>

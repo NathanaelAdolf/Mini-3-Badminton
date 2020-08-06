@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddParticipantViewController: UIViewController {
+class AddParticipantViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var inputNameTextField: UITextField!
     
@@ -17,10 +17,16 @@ class AddParticipantViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
+        self.inputNameTextField.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         submitButton.layer.cornerRadius = 5
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
 //    @objc func dismissKeyboard() {
