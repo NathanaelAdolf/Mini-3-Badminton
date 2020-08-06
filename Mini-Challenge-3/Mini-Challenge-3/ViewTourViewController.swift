@@ -154,39 +154,45 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
 
     func leaveAction(at indexPath: IndexPath)->UIContextualAction
     {
-        let action = UIContextualAction(style: .destructive, title: "Leave") { (action, view, completion) in
-            
-//            self.tournamentListArray.remove(at: indexPath.row)
-            print(self.tournamentListArray[indexPath.row].cupCode!)
-            
-            
-            self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
-            self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
-            self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
-            var z: Int = 0
-            for item in self.tourCodeUD {
-                if self.tournamentListArray[indexPath.row].cupCode! == item  {
-                    self.tourNameUD.remove(at: z)
-                    self.tourDescUD.remove(at: z)
-                    self.tourCodeUD.remove(at: z)
+        var action = UIContextualAction()
+        if indexPath.row >= 0 && indexPath.row < tournamentListArray.count
+        {
+              action = UIContextualAction(style: .destructive, title: "Leave")
+              {
+                (action, view, completion) in
+                        
+                print(self.tournamentListArray[indexPath.row].cupCode!)
+                
+                
+                self.tourNameUD = UserDefaults.standard.array(forKey: "joinTourName") as! [String]
+                self.tourDescUD = UserDefaults.standard.array(forKey: "joinTourDesc") as! [String]
+                self.tourCodeUD = UserDefaults.standard.array(forKey: "joinTourCode") as! [String]
+                var z: Int = 0
+                for item in self.tourCodeUD {
+                    if self.tournamentListArray[indexPath.row].cupCode! == item  {
+                        self.tourNameUD.remove(at: z)
+                        self.tourDescUD.remove(at: z)
+                        self.tourCodeUD.remove(at: z)
+                    }
+                    z += 1
                 }
-                z += 1
-            }
-            UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
-            UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
-            UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
-            DispatchQueue.main.async {
-                self.jointournamentTableView.reloadData()
+                UserDefaults.standard.set(self.tourNameUD, forKey: "joinTourName")
+                UserDefaults.standard.set(self.tourDescUD, forKey: "joinTourDesc")
+                UserDefaults.standard.set(self.tourCodeUD, forKey: "joinTourCode")
+                DispatchQueue.main.async {
+                    self.jointournamentTableView.reloadData()
+                }
+                
+                self.checkTournament()
+                
             }
             
-            self.checkTournament()
-            
+            action.image = UIImage(systemName: "trash")
+            action.backgroundColor = .red
+        
         }
         
-        action.image = UIImage(systemName: "trash")
-        action.backgroundColor = .red
-        
-        return action
+       return action
     }
     
     @objc func addButtonPressed()

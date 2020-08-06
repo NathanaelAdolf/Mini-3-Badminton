@@ -108,26 +108,28 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func deleteAction(at indexPath: IndexPath)->UIContextualAction
     {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            
-//            self.tournamentListArray.remove(at: indexPath.row)
-//            self.tournamentTableView.deleteRows(at: [indexPath], with: .automatic)
-            let deleteCode = self.tournamentListArray[indexPath.row].cupCode!
-//            print(deleteCode)
-//
-            self.deleteTournament(code: deleteCode)
-            self.deleteMatches(code: deleteCode)
-            self.deletePlayers(code: deleteCode)
-            
-            self.loadManageTournament()
-//            print(self.tournamentListArray[indexPath.row].cupCode!)
-            
-        }
+        var action = UIContextualAction()
+        if indexPath.row >= 0 && indexPath.row < tournamentListArray.count
+                {
+                    action = UIContextualAction(style: .destructive, title: "Delete")
+                    { (action, view, completion) in
+                            
+                    let deleteCode = self.tournamentListArray[indexPath.row].cupCode!
+
+                    self.deleteTournament(code: deleteCode)
+                    self.deleteMatches(code: deleteCode)
+                    self.deletePlayers(code: deleteCode)
+                    
+                    self.loadManageTournament()
+                                
+                    }
+                    
+                    action.image = UIImage(systemName: "trash")
+                    action.backgroundColor = .red
+                            
+                }
         
-        action.image = UIImage(systemName: "trash")
-        action.backgroundColor = .red
-        
-        return action
+      return action
     }
     
     func cellBackgroundView(cellWidth: UITableViewCell)->UIView
