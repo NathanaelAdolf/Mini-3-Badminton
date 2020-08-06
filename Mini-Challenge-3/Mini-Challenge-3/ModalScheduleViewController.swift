@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModalScheduleViewController: UIViewController {
+class ModalScheduleViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstPlayerName: UILabel!
     @IBOutlet weak var secondPlayerName: UILabel!
@@ -60,6 +60,13 @@ class ModalScheduleViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
 
+        firstPlayerGame1.delegate = self
+        firstPlayerGame2.delegate = self
+        firstPlayerGame3.delegate = self
+        secondPlayerGame1.delegate = self
+        secondPlayerGame2.delegate = self
+        secondPlayerGame3.delegate = self
+        
         firstPlayerName.text = firstPlayer
         secondPlayerName.text = secondPlayer
         
@@ -107,13 +114,13 @@ class ModalScheduleViewController: UIViewController {
         }
         print("gameP1 = \(gameP1), gameP2 = \(gameP2)")
         
-        if ((gameP1 == 2 || gameP2 == 2) && (firstPlayerGame3.text != "" || secondPlayerGame3.text != "")) {
+        if ((gameP1 == 1 && gameP2 == 1) && (firstPlayerGame3.text == "" || secondPlayerGame3.text == "")) {
             //error
             return 0
         }
-        else{
-            let w13 = Int(firstPlayerGame2.text!)!
-            let w23 = Int(secondPlayerGame2.text!)!
+        else if ((gameP1 == 1 && gameP2 == 1) && (firstPlayerGame3.text != "" || secondPlayerGame3.text != "")){
+            let w13 = Int(firstPlayerGame3.text!)!
+            let w23 = Int(secondPlayerGame3.text!)!
             
             if ((w13 > w23 && w13 == 21 && w13-w23 >= 2) || (w13 > w23 && 22...30 ~= w13 && w13-w23 == 2) || (w13 == 30 && w23 == 29)) {
                 gameP1 += 1
@@ -130,6 +137,18 @@ class ModalScheduleViewController: UIViewController {
         return 1
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentText = textField.text ?? ""
+
+        // cek range
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+        
+        return updatedText.count <= 2
+    }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 
