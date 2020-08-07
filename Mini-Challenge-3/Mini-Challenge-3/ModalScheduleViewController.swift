@@ -120,6 +120,10 @@ class ModalScheduleViewController: UIViewController, UITextFieldDelegate {
             //error
             return 0
         }
+        else if ((gameP1 == 2 || gameP2 == 2) && (firstPlayerGame3.text != "" || secondPlayerGame3.text != "")){
+            //error
+            return 0
+        }
         else if ((gameP1 == 1 && gameP2 == 1) && (firstPlayerGame3.text != "" || secondPlayerGame3.text != "")){
             let w13 = Int(firstPlayerGame3.text!)!
             let w23 = Int(secondPlayerGame3.text!)!
