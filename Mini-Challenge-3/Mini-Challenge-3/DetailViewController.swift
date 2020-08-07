@@ -28,8 +28,15 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-
-        // Do any additional setup after loading the view.
+                
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+          navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         if tempTitle == "" {
             getName(code: tempCode)
             print(tempTitle)
@@ -38,21 +45,11 @@ class DetailViewController: UIViewController {
         }
         
         codeLabel.text = tempCode
-        
-        let test = DetailViewController()
-        print("test variable: \(test.tempTitle)")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-          navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
    
-    
     @IBAction func unwindFromAdd(_ segue: UIStoryboardSegue) {
-    //        tournamentListArray.append(CupThumbnail(title: newTourName, desc: newTourDesc, code: newTourCode))
-    //        jointournamentTableView.reloadData()
+
             print(UserDefaults.standard.string(forKey: "tempTourName"))
             print("unwind")
         }
@@ -105,7 +102,6 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
-        
         if identifier == "cancelToManage"{
             print ("berhasil balik")
         }
@@ -117,11 +113,5 @@ class DetailViewController: UIViewController {
             destination.status = self.status
             
         }
-//        if let destination = segue.destination as? DetailStandingsViewController
-//        {
-//            print("tes standings")
-//            destination.playerList = tempParticipantName
-//            destination.tempCode = tempCode
-//        }
     }
 }
