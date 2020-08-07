@@ -14,12 +14,15 @@ class AddParticipantViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var submitButton: UIButton!
     
+    @IBOutlet weak var errorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        self.inputNameTextField.delegate = self
+       // self.inputNameTextField.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        errorLabel.isHidden = true
         
         submitButton.layer.cornerRadius = 5
     }
@@ -28,16 +31,24 @@ class AddParticipantViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-    
-//    @objc func dismissKeyboard() {
-//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-//        view.endEditing(true)
-//    }
-    
+        
     @IBAction func submitAction(_ sender: Any) {
     
-     //performSegue(withIdentifier: "unwindSegueFromModal", sender: self)
-        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if inputNameTextField.text == ""
+           {
+               let alert = UIAlertController(title: "Error", message: "Player name Must be filled", preferredStyle: .alert)
+               let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+               alert.addAction(action)
+               self.present(alert, animated: true, completion: nil)
+               return false
+               
+           }
+        
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

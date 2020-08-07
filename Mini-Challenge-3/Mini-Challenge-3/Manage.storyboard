@@ -304,16 +304,26 @@
                                             <segue destination="OnZ-7c-Jz3" kind="unwind" identifier="unwindSegueFromModal" unwindAction="unwindSegueFromModalWithSender:" id="0Y9-00-qVf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dee-rP-b7G">
+                                        <rect key="frame" x="40" y="144" width="334" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="bqX-ik-Gvc" firstAttribute="top" secondItem="dee-rP-b7G" secondAttribute="bottom" constant="18" id="3Wd-Sw-7fD"/>
                                     <constraint firstItem="YJz-LG-xD6" firstAttribute="leading" secondItem="TfX-R9-Qx5" secondAttribute="leading" constant="40" id="6a3-Q5-y4F"/>
                                     <constraint firstAttribute="bottom" secondItem="bqX-ik-Gvc" secondAttribute="bottom" constant="247" id="Al3-za-Wer"/>
                                     <constraint firstAttribute="height" constant="479" id="Fks-pP-3B9"/>
+                                    <constraint firstAttribute="trailing" secondItem="dee-rP-b7G" secondAttribute="trailing" constant="40" id="Gkz-HI-Clt"/>
                                     <constraint firstItem="bqX-ik-Gvc" firstAttribute="top" secondItem="YJz-LG-xD6" secondAttribute="bottom" constant="50" id="TSX-7q-kh2"/>
                                     <constraint firstAttribute="trailing" secondItem="bqX-ik-Gvc" secondAttribute="trailing" constant="129" id="U0T-gd-lx0"/>
                                     <constraint firstItem="YJz-LG-xD6" firstAttribute="top" secondItem="TfX-R9-Qx5" secondAttribute="top" constant="94" id="Zxo-dD-Gpl"/>
+                                    <constraint firstItem="dee-rP-b7G" firstAttribute="top" secondItem="YJz-LG-xD6" secondAttribute="bottom" constant="16" id="mxM-Wn-UgR"/>
                                     <constraint firstItem="bqX-ik-Gvc" firstAttribute="leading" secondItem="TfX-R9-Qx5" secondAttribute="leading" constant="129" id="n36-Zw-j5t"/>
+                                    <constraint firstItem="dee-rP-b7G" firstAttribute="leading" secondItem="TfX-R9-Qx5" secondAttribute="leading" constant="40" id="qHZ-n5-t5p"/>
                                     <constraint firstAttribute="trailing" secondItem="YJz-LG-xD6" secondAttribute="trailing" constant="40" id="uC8-Zq-zCF"/>
                                 </constraints>
                             </view>
@@ -327,6 +337,7 @@
                         <viewLayoutGuide key="safeArea" id="9cx-OL-qfj"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="dee-rP-b7G" id="9ou-GN-LMq"/>
                         <outlet property="inputNameTextField" destination="YJz-LG-xD6" id="rsj-ui-CiH"/>
                         <outlet property="submitButton" destination="bqX-ik-Gvc" id="Hr4-FJ-rMl"/>
                     </connections>

@@ -106,8 +106,10 @@ class CreateTourViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         else if playerNameListArray.count < 3
         {
-            errorLabel.isHidden = false
-            errorLabel.text = "Participant must be at least 3 person"
+            let alert = UIAlertController(title: "Error", message: "Number of participant at least 3 person", preferredStyle: .alert)
+              let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+              alert.addAction(action)
+              self.present(alert, animated: true, completion: nil)
         }
         else{
             errorLabel.isHidden = false
