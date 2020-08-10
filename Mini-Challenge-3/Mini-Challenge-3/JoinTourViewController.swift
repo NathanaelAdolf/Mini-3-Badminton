@@ -12,8 +12,6 @@ class JoinTourViewController: UIViewController, UITableViewDelegate, UITextField
     
     @IBOutlet weak var TournamentCodeTextField: UITextField!
     
-    @IBOutlet weak var ParticipantNameTextField: UITextField!
-    
     @IBOutlet weak var errorLabel: UILabel!
     
     var tournamentCodeArray: [String] = []
@@ -47,12 +45,6 @@ class JoinTourViewController: UIViewController, UITableViewDelegate, UITextField
             errorLabel.isHidden = false
             errorLabel.text = "Tournament code must be filled"
         }
-        else if ParticipantNameTextField.text == ""
-        {
-            errorLabel.isHidden = false
-            errorLabel.text = "Player name must be filled"
-        }
-            
         else {
             getViewData()
 
@@ -159,8 +151,7 @@ class JoinTourViewController: UIViewController, UITableViewDelegate, UITextField
         overrideUserInterfaceStyle = .light
         
         self.TournamentCodeTextField.delegate = self
-        self.ParticipantNameTextField.delegate = self
-        
+       
         self.hideKeyboardWhenTappedAround()
         
         joinButton.layer.cornerRadius = 5
