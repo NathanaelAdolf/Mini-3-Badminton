@@ -268,9 +268,12 @@ class ViewTourViewController: UIViewController, UITableViewDelegate, UITableView
                                     print("yes")
                                 }
                                 else {
-                                    self.tourNameUD.remove(at: x)
-                                    self.tourDescUD.remove(at: x)
-                                    self.tourCodeUD.remove(at: x)
+                                    if x >= 0 && x <= self.tourNameUD.count {
+                                        self.tourNameUD.remove(at: x)
+                                        self.tourDescUD.remove(at: x)
+                                        self.tourCodeUD.remove(at: x)
+                                    }
+                                    
                                 }
                                 x += 1
                             }
