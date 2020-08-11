@@ -276,7 +276,7 @@ class ModalScheduleViewController: UIViewController, UITextFieldDelegate {
         let parameters = "player1=\(firstPlayer)&player2=\(secondPlayer)&badmintour-key=badmintour399669&first_g1=\(firstGame1)&first_g2=\(firstGame2)&first_g3=\(firstGame3)&second_g1=\(secondGame1)&second_g2=\(secondGame2)&second_g3=\(secondGame3)&status=1"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/matchesupd")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://badmintour.viablosolution.com/tournament/matchesupd")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
@@ -302,7 +302,7 @@ class ModalScheduleViewController: UIViewController, UITextFieldDelegate {
         let parameters = "badmintour-key=badmintour399669&nama=\(winner)&play=1&win=1&lose=0&dif=\(winnerDiff)&point=3"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players1")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://badmintour.viablosolution.com/tournament/players1")!,timeoutInterval: Double.infinity)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
@@ -329,7 +329,7 @@ class ModalScheduleViewController: UIViewController, UITextFieldDelegate {
         let parameters = "badmintour-key=badmintour399669&nama=\(losser)&play=1&win=0&lose=1&dif=\(losserDiff)&point=0"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/players1")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://badmintour.viablosolution.com/tournament/players1")!,timeoutInterval: Double.infinity)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 

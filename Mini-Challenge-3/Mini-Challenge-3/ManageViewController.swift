@@ -234,7 +234,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let parameters = "badmintour-key=badmintour399669&code=\(code)"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/deltour")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://badmintour.viablosolution.com/tournament/deltour")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
@@ -259,7 +259,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let parameters = "badmintour-key=badmintour399669&code=\(code)"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/delmatches")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://badmintour.viablosolution.com/tournament/delmatches")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
@@ -284,7 +284,7 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let parameters = "badmintour-key=badmintour399669&code=\(code)"
         let postData =  parameters.data(using: .utf8)
 
-        var request = URLRequest(url: URL(string: "https://stefanjivalino9.000webhostapp.com/tournament/delplayer")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://badmintour.viablosolution.com/tournament/delplayer")!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
@@ -307,17 +307,17 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func loadManageTournament() {
         tournamentListArray.removeAll()
         let headers = [
-            "api-host": "https://stefanjivalino9.000webhostapp.com/"
+            "api-host": "https://badmintour.viablosolution.com/"
             //                        "api-host": "free-nba.p.rapidapi.com",
             //                        "x-rapidapi-key": "3a512fd609mshca217d2587053fap1a30d3jsnd633afea68cb"
         ]
         
         //        let id = 1
         //
-        //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
+        //        let request = NSMutableURLRequest(url: NSURL(string: "https://badmintour.viablosolution.com/index.php/user/user?id=1")! as URL,
         //                                          cachePolicy: .useProtocolCachePolicy,
         //                                          timeoutInterval: 10.0)
-        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://badmintour.viablosolution.com/tournament/manage?badmintour-key=badmintour399669")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         //                let request = NSMutableURLRequest(url: NSURL(string: "https://free-nba.p.rapidapi.com/games/1")! as URL,

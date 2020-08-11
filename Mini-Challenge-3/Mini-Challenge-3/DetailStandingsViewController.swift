@@ -84,7 +84,7 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
         
         //        let id = 1
         //
-        //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
+        //        let request = NSMutableURLRequest(url: NSURL(string: "https://badmintour.viablosolution.com/index.php/user/user?id=1")! as URL,
         //                                          cachePolicy: .useProtocolCachePolicy,
         //                                          timeoutInterval: 10.0)
         let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/players?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,
@@ -154,7 +154,7 @@ class DetailStandingsViewController: UIViewController, UITableViewDelegate, UITa
             
             //        let id = 1
             //
-            //        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/index.php/user/user?id=1")! as URL,
+            //        let request = NSMutableURLRequest(url: NSURL(string: "https://badmintour.viablosolution.com/index.php/user/user?id=1")! as URL,
             //                                          cachePolicy: .useProtocolCachePolicy,
             //                                          timeoutInterval: 10.0)
             let request = NSMutableURLRequest(url: NSURL(string: "http://localhost:8080/badmintour-api/tournament/players?badmintour-key=badmintour399669&code=\(tempCode)")! as URL,

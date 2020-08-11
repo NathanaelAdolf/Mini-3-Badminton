@@ -72,12 +72,12 @@ class JoinTourViewController: UIViewController, UITableViewDelegate, UITextField
     func getViewData() {
         let tourCode = TournamentCodeTextField.text!
         let headers = [
-            "api-host": "https://stefanjivalino9.000webhostapp.com/"
+            "api-host": "https://badmintour.viablosolution.com/"
             
         ]
         
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669&code=\(tourCode)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://badmintour.viablosolution.com/tournament/manage?badmintour-key=badmintour399669&code=\(tourCode)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         //

@@ -56,12 +56,12 @@ class DetailViewController: UIViewController {
     
     func getName(code: String) {
         let headers = [
-            "api-host": "https://stefanjivalino9.000webhostapp.com/"
+            "api-host": "https://badmintour.viablosolution.com/"
             
         ]
         
         
-        let request = NSMutableURLRequest(url: NSURL(string: "https://stefanjivalino9.000webhostapp.com/tournament/manage?badmintour-key=badmintour399669&code=\(code)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "https://badmintour.viablosolution.com/tournament/manage?badmintour-key=badmintour399669&code=\(code)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 10.0)
         //
