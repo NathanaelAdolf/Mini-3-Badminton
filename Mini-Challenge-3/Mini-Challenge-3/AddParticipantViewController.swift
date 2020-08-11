@@ -19,7 +19,7 @@ class AddParticipantViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-       // self.inputNameTextField.delegate = self
+        self.inputNameTextField.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         errorLabel.isHidden = true
